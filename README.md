@@ -2,14 +2,14 @@
 
 ## Usersテーブル
 
-| Column     | Type   | Options                   |
-| ---------- | ------ | ------------------------- |
+| Column    | Type   | Options                   |
+| --------- | ------ | ------------------------- |
 | firstname | string | null: false               |
 | lastname  | string | null: false               |
-| nickname   | string | null: false               |
-| birthday   | date   | null: false               |
-| email      | string | null: false, unique: true |
-| password   | string | null: false               |
+| nickname  | string | null: false               |
+| birthday  | date   | null: false               |
+| email     | string | null: false, unique: true |
+| password  | string | null: false               |
 
 ### Association
 - has_one :profile
