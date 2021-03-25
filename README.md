@@ -4,8 +4,8 @@
 
 | Column     | Type   | Options                   |
 | ---------- | ------ | ------------------------- |
-| first_name | string | null: false               |
-| last_name  | string | null: false               |
+| firstname | string | null: false               |
+| lastname  | string | null: false               |
 | nickname   | string | null: false               |
 | birthday   | date   | null: false               |
 | email      | string | null: false, unique: true |
