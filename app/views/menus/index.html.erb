@@ -1,0 +1,13 @@
+<h1>メニューリスト</h1>
+<p><%= link_to 'メニューを新規作成する（開発者用）',new_menu_path %></p>
+
+<% @menus.each do |menu| %>
+  <div>
+    メニュー名：<%= link_to menu.title, menu_path(menu.id) %><br>
+    分量：<%= menu.amount %>（<%= menu.unit %>）<br>
+    カロリー：<%= menu.calorie %>kcal<br>
+    ___________________________________
+  </div>
+<% end %>
+
+<%= link_to 'トップページに戻る', root_path %>
