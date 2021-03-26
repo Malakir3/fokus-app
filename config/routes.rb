@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'users#index'
   resources :users, only: :new
-  devise_for :users
+  resources :menus, only: [:index, :new, :create]
 end
