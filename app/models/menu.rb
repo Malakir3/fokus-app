@@ -1,4 +1,6 @@
 class Menu < ApplicationRecord
+  has_many :standards
+
   with_options presence: true do
     validates :title
     validates :amount
