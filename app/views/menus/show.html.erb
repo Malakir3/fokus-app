@@ -1,0 +1,8 @@
+<h1>メニュー詳細ページ</h1>
+
+メニュー名：<%= @menu.title %><br>
+分量：<%= @menu.amount %>（<%= @menu.unit %>）<br>
+カロリー：<%= @menu.calorie %>kcal<br>
+
+<%= link_to '編集する', edit_menu_path(@menu.id) %>
+<%= link_to '削除する', menu_path(@menu.id), method: :delete %>

@@ -16,6 +16,26 @@ class MenusController < ApplicationController
     end
   end
 
+  def show
+    @menu = Menu.find(params[:id])
+  end
+
+  def edit
+    @menu = Menu.find(params[:id])
+  end
+
+  def update
+    @menu = Menu.find(params[:id])
+    unless @menu.update(menu_params)
+      render :edit
+    end
+  end
+
+  def destroy
+    @menu = Menu.find(params[:id])
+    @menu.destroy
+  end
+
   private
 
   def menu_params
