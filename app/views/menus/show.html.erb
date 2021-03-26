@@ -6,3 +6,5 @@
 
 <%= link_to '編集する', edit_menu_path(@menu.id) %>
 <%= link_to '削除する', menu_path(@menu.id), method: :delete %>
+
+<p><%= link_to 'このメニューについてあなたの基準を登録する', new_menu_standard_path(@menu.id) %></p>

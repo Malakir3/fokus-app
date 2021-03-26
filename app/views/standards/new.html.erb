@@ -1,0 +1,29 @@
+<h1><%= @menu.title%>の基準登録ページ</h1>
+
+<% unless Standard.where(user_id: current_user.id, menu_id: @menu.id) == [] %>
+  <div>
+    すでに基準が登録されています
+    <%=link_to '' %>
+  </div>
+<% else %>
+  <%= form_with model: [@menu, @standard], local: true do |f| %>
+    <div>
+      <%= f.label :large %>
+      <%= f.text_field :large, placeholder: '例）500', autofocus: true %>
+      <%= @menu.unit %>
+    </div>
+    <div>
+      <%= f.label :medium %>
+      <%= f.text_field :medium, placeholder: '例）300' %>
+      <%= @menu.unit %>
+    </div>
+    <div>
+      <%= f.label :small %>
+      <%= f.text_field :small, placeholder: '例）100 ' %>
+      <%= @menu.unit %>
+    </div>
+    <div>
+      <%= f.submit '登録する' %>
+    </div>
+  <% end %>
+<% end %>

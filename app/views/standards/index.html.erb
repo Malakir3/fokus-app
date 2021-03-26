@@ -1,0 +1,14 @@
+<h1><%= current_user.nickname %>さんの基準リスト</h1>
+
+<% @standards.each do |standard| %>
+  <div>
+    メニュー名：<%= link_to standard.menu.title, menu_standard_path(standard.menu_id, standard.id) %><br>
+    大盛り：<%= standard.large %>（<%= standard.menu.unit %>）…○○ kcal<br>
+    普通：<%= standard.medium %>（<%= standard.menu.unit %>）…<%= standard.menu.calorie %> kcal<br>
+    小盛り：<%= standard.small %>（<%= standard.menu.unit %>）…○○ kcal<br>
+    ___________________________________
+  </div>
+<% end %>
+
+<%=link_to 'メニューリストへ戻る', menus_path %>
+<%=link_to 'トップページへ戻る', root_path %>
