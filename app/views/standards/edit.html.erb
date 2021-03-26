@@ -1,0 +1,22 @@
+<h1><%= @standard.menu.title%>の基準修正ページ</h1>
+
+<%= form_with model: [@menu, @standard], local: true do |f| %>
+  <div>
+    <%= f.label :large %>
+    <%= f.text_field :large, placeholder: '例）500', autofocus: true %>
+    <%= @standard.menu.unit %>
+  </div>
+  <div>
+    <%= f.label :medium %>
+    <%= f.text_field :medium, placeholder: '例）300' %>
+    <%= @standard.menu.unit %>
+  </div>
+  <div>
+    <%= f.label :small %>
+    <%= f.text_field :small, placeholder: '例）100 ' %>
+    <%= @standard.menu.unit %>
+  </div>
+  <div>
+    <%= f.submit '修正する' %>
+  </div>
+<% end %>

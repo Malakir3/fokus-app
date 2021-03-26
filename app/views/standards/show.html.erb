@@ -1,0 +1,12 @@
+<h1><%=@standard.user.nickname %>さん専用<br/>
+<%= @standard.menu.title %>の基準詳細ページ</h1>
+
+<div>
+  大盛り：<%= @standard.large %>（<%= @standard.menu.unit %>）…○○ kcal<br>
+  普通：<%= @standard.medium %>（<%= @standard.menu.unit %>）…<%= @standard.menu.calorie %> kcal<br>
+  小盛り：<%= @standard.small %>（<%= @standard.menu.unit %>）…○○ kcal<br>
+</div>
+
+<%= link_to '編集する', edit_menu_standard_path(@standard.menu_id, @standard.id) %>
+<%= link_to '削除する', menu_standard_path(@standard.menu_id, @standard.id), method: :delete %>
+<%= link_to '基準一覧に戻る', user_standards_path(@standard.user_id) %>
