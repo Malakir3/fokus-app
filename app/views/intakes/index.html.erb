@@ -1,0 +1,16 @@
+<%# <h1><%= current_user.nickname %> 
+<%# さんの基準リスト</h1> %>
+<h1>全ユーザー実績リスト</h1>
+
+<% @intakes.each do |intake| %>
+  <div>
+    年月日：<%= intake.date %><br>
+    時間帯：<%= intake.timing_id %><br>
+    メニュー名：<%= intake.menu.title %><br>
+    量：<%= intake.value_id %>（<%= intake.menu.unit %>）<br>
+    カロリー：<%= intake.menu.standard.large %> kcal<br>
+    ___________________________________
+  </div>
+<% end %>
+
+<%=link_to 'トップページへ戻る', root_path %>

@@ -16,9 +16,7 @@ class IntakesController < ApplicationController
 
   def create
     @intake = Intake.new(intake_params)
-    if @intake.valid?
-      Intake.create(intake_params)
-    else
+    unless @intake.save
       @menu = Menu.find(params[:menu_id])
       render :new
     end
