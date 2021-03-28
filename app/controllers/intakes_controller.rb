@@ -49,6 +49,6 @@ class IntakesController < ApplicationController
   private
 
   def intake_params
-    params.require(:intake).permit(:date, :timing_id, :value).merge(user_id: current_user.id, menu_id: params[:menu_id])
+    params.require(:intake).permit(:date, :timing_id, :value_id).merge(user_id: current_user.id, menu_id: params[:menu_id])
   end
 end
