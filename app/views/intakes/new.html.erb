@@ -1,0 +1,19 @@
+<h1>食事実績登録ページ</h1>
+
+<%= form_with model: [@menu, @intake], local: true do |f| %>
+  <div>
+    <%= f.label :date %><br />
+    <%= f.date_select :date, start_year: 2021, end_year: 2021, autofocus: true %>
+  </div>
+  <div>
+    <%= f.label :timing_id %><br />
+    <%= f.text_field :timing_id %>
+  </div>
+  <div>
+    <%= f.label :value_id %><br />
+    <%= f.text_field :value_id %>
+  </div>
+  <div>
+    <%= f.submit '登録する' %>
+  </div>
+<% end %>

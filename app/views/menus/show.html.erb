@@ -8,3 +8,4 @@
 <%= link_to '削除する', menu_path(@menu.id), method: :delete %>
 
 <p><%= link_to 'このメニューについてあなたの基準を登録する', new_menu_standard_path(@menu.id) %></p>
+<p><%= link_to 'このメニューを食べたので実績を登録する', new_menu_intake_path(@menu.id) %></p>

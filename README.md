@@ -64,7 +64,7 @@
 | menu      | references | null: false, foreign_key: true |
 | date      | date       | null: false                    |
 | timing_id | integer    | null: false                    |
-| amount    | integer    | null: false                    |
+| value_id  | integer    | null: false                    |
 
 ### Association
 - belongs_to :user
