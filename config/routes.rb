@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'users#index'
-  resources :users, only: :new do
-    resources :standards, only: :index
-  end
+  resources :users, only: :new
+  resources :standards, only: :index
+  resources :intakes, only: :index
   resources :menus do
     resources :standards, except: :index
+    resources :intakes, except: :index
   end
 end

@@ -1,0 +1,31 @@
+<h1><%= current_user.nickname %>さんの実績リスト</h1>
+
+<% @intakes.each do |intake| %>
+  <div>
+    <%= link_to '詳細ページ',menu_intake_path(intake.menu_id, intake.id) %>
+    <%= link_to '編集ページ',edit_menu_intake_path(intake.menu_id, intake.id) %>
+    <%= link_to '削除',menu_intake_path(intake.menu_id, intake.id), method: :delete %><br>
+    年月日：<%= intake.date %><br>
+    時間帯：<%= Timing.find(intake.timing_id).name %><br>
+    メニュー名：<%= intake.menu.title %><br>
+    量(大・中・小)：
+    <%= intake_value = Value.find(intake.value_id).name %><br>
+    グラム数：
+    <% standard = @standards.where(menu_id: intake.menu_id) %>
+      <% if intake_value == '多め' %>
+        <%= standard[0].large %>
+      <% elsif intake_value == '普通' %>
+        <%= standard[0].medium %>
+      <% elsif intake_value == '少なめ' %>
+        <%= standard[0].small %>
+      <% else %>
+        任意の量
+      <% end %>
+    g<br>
+    カロリー：〇〇 kcal<br>
+  
+    ___________________________________
+  </div>
+<% end %>
+
+<%=link_to 'トップページへ戻る', root_path %>
