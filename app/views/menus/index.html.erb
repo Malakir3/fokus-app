@@ -1,6 +1,6 @@
 <h1>メニューリスト</h1>
 <p><%= link_to 'メニューを新規作成する（開発者用）',new_menu_path %></p>
-<p><%= link_to '全ユーザーの基準一覧', standards_path %></p>
+<p><%= link_to 'あなたの基準一覧', standards_path %></p>
 <% @menus.each do |menu| %>
   <div>
     メニュー名：<%= link_to menu.title, menu_path(menu.id) %><br>

@@ -1,7 +1,8 @@
 class IntakesController < ApplicationController
 
   def index
-    @intakes = Intake.includes(:menu)
+    @intakes = Intake.includes(:menu).where(user_id: current_user.id)
+    @standards = Standard.includes(:menu).where(user_id: current_user.id)
   end
 
   def new
@@ -24,6 +25,7 @@ class IntakesController < ApplicationController
 
   def show
     @intake = Intake.find(params[:id])
+    @standards = Standard.includes(:menu).where(user_id: current_user.id)
   end
 
   def edit
@@ -40,7 +42,7 @@ class IntakesController < ApplicationController
   end
 
   def destroy
-    @intake = intake.find(params[:id])
+    @intake = Intake.find(params[:id])
     @intake.destroy
   end
 

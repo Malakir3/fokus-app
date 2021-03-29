@@ -1,7 +1,7 @@
 class StandardsController < ApplicationController
 
   def index
-    @standards = Standard.includes(:menu)
+    @standards = Standard.includes(:menu).where(user_id: current_user.id)
   end
 
   def new

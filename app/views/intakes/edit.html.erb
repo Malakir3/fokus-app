@@ -1,0 +1,19 @@
+<h1><%= @menu.title%>の食事実績編集ページ</h1>
+
+<%= form_with model: [@menu, @intake], local: true do |f| %>
+  <div>
+    <%= f.label :date %><br />
+    <%= f.date_select :date, start_year: 2021, end_year: 2021 %>
+  </div>
+  <div>
+    <%= f.label :timing_id %><br />
+    <%= f.collection_select(:timing_id, Timing.all, :id, :name, {}, {}) %>
+  </div>
+  <div>
+    <%= f.label :value_id %><br />
+    <%= f.collection_select(:value_id, Value.all, :id, :name, {}, {}) %>
+  </div>
+  <div>
+    <%= f.submit '修正する' %>
+  </div>
+<% end %>
