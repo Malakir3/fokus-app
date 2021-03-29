@@ -10,7 +10,6 @@
 <h1><%=current_user.nickname %>さん専用<br/>
 <%= @intake.menu.title %>の実績詳細ページ</h1>
 
-<div>
   年月日：<%= @intake.date %><br>
   時間帯：<%= Timing.find(@intake.timing_id).name %><br>
   メニュー名：<%= @intake.menu.title %><br>
