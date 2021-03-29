@@ -1,13 +1,21 @@
-<%# <h1><%= current_user.nickname %> 
-<%# さんの基準リスト</h1> %>
 <h1><%= current_user.nickname %>さんの基準リスト</h1>
 
 <% @standards.each do |standard| %>
+  <%# 変数の定義 %>
+    <% menu_cal = standard.menu.calorie %>
+    <% menu_amount = standard.menu.amount %>
+    <% stn_large = standard.large %>
+    <% stn_medium = standard.medium %>
+    <% stn_small = standard.small %>
+  <%#// 変数の定義 %>
   <div>
     メニュー名：<%= link_to standard.menu.title, menu_standard_path(standard.menu_id, standard.id) %><br>
-    大盛り：<%= standard.large %>（<%= standard.menu.unit %>）…○○ kcal<br>
-    普通：<%= standard.medium %>（<%= standard.menu.unit %>）…<%= standard.menu.calorie %> kcal<br>
-    小盛り：<%= standard.small %>（<%= standard.menu.unit %>）…○○ kcal<br>
+    大盛り：<%= standard.large %>（<%= standard.menu.unit %>）
+           <%= menu_cal * stn_large / menu_amount %>kcal<br>
+    普通：<%= standard.medium %>（<%= standard.menu.unit %>）
+           <%= menu_cal * stn_medium / menu_amount %>kcal<br>
+    小盛り：<%= standard.small %>（<%= standard.menu.unit %>）
+           <%= menu_cal * stn_small / menu_amount %>kcal<br>
     ___________________________________
   </div>
 <% end %>

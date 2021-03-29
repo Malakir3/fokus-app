@@ -1,29 +1,48 @@
 <h1><%= current_user.nickname %>さんの実績リスト</h1>
 
 <% @intakes.each do |intake| %>
+  <%# 変数の定義 %>
+    <% menu_cal = intake.menu.calorie %>
+    <% menu_amount = intake.menu.amount %>
+    <% standard = @standards.where(menu_id: intake.menu_id) %>    
+    <% stn_large = standard[0].large %>
+    <% stn_medium = standard[0].medium %>
+    <% stn_small = standard[0].small %>
+  <%#// 変数の定義 %>
   <div>
     <%= link_to '詳細ページ',menu_intake_path(intake.menu_id, intake.id) %>
     <%= link_to '編集ページ',edit_menu_intake_path(intake.menu_id, intake.id) %>
     <%= link_to '削除',menu_intake_path(intake.menu_id, intake.id), method: :delete %><br>
+
     年月日：<%= intake.date %><br>
     時間帯：<%= Timing.find(intake.timing_id).name %><br>
     メニュー名：<%= intake.menu.title %><br>
-    量(大・中・小)：
+    量：
     <%= intake_value = Value.find(intake.value_id).name %><br>
+    
     グラム数：
-    <% standard = @standards.where(menu_id: intake.menu_id) %>
       <% if intake_value == '多め' %>
-        <%= standard[0].large %>
+        <%= stn_large %>
       <% elsif intake_value == '普通' %>
-        <%= standard[0].medium %>
+        <%= stn_medium %>
       <% elsif intake_value == '少なめ' %>
-        <%= standard[0].small %>
+        <%= stn_small %>
       <% else %>
         任意の量
       <% end %>
     g<br>
-    カロリー：〇〇 kcal<br>
-  
+    
+    カロリー：
+      <% if intake_value == '多め' %>
+        <%= menu_cal * stn_large / menu_amount %>
+      <% elsif intake_value == '普通' %>
+        <%= menu_cal * stn_medium / menu_amount %>
+      <% elsif intake_value == '少なめ' %>
+        <%= menu_cal * stn_small / menu_amount %>
+      <% else %>
+        任意の量
+      <% end %>
+    kcal<br>
     ___________________________________
   </div>
 <% end %>
