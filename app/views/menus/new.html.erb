@@ -6,6 +6,7 @@
     <%= f.text_field :title, placeholder: '例）ハンバーグ', autofocus: true %>
   </div>
   <div>
+  <div>
     <%= f.label :amount %>
     <%= f.text_field :amount, placeholder: '例）300' %>
 
@@ -19,6 +20,12 @@
   <div>
     <%= f.label :bar_code %>
     <%= f.text_field :bar_code, placeholder: '例）0123456789' %>
+  </div>
+    <p>
+    クリックしてファイルをアップロード
+    </p>
+    <%= f.label :images %>
+    <%= f.file_field :images, name: 'menu[images][]', id:"menu-image" %>
   </div>
   <div>
     <%= f.submit '登録する' %>

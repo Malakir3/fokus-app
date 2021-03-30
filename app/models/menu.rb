@@ -1,5 +1,6 @@
 class Menu < ApplicationRecord
   has_many :standards, dependent: :destroy
+  has_many_attached :images
 
   with_options presence: true do
     validates :title
