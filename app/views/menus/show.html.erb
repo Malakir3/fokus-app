@@ -7,5 +7,11 @@
 <%= link_to '編集する', edit_menu_path(@menu.id) %>
 <%= link_to '削除する', menu_path(@menu.id), method: :delete %>
 
-<p><%= link_to 'Fokus 基準を登録する', new_menu_standard_path(@menu.id) %></p>
+<%# 基準がまだ登録されていない場合に表示 %>
+<% if Standard.where(user_id: current_user.id, menu_id: @menu.id) == []%>
+  <h3><%= link_to 'Fokus! 基準を登録する', new_menu_standard_path(@menu.id) %></h3>
+<% end %>
+<%# /基準がまだ登録されていない場合に表示 %>
+
 <p><%= link_to '実績を登録する', new_menu_intake_path(@menu.id) %></p>
+<p><%= link_to 'メニュー一覧へ戻る', menus_path %></p>

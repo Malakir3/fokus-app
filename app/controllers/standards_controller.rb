@@ -8,11 +8,6 @@ class StandardsController < ApplicationController
   def new
     @standard = Standard.new
     @menu = Menu.find(params[:menu_id])
-
-    # ↓後で編集する。すでに基準が登録されている場合は編集ページにリダイレクト。
-    # unless Standard.where(user_id: current_user.id, menu_id: @menu.id) == []
-    #   redirect_to action: :edit
-    # end
   end
 
   def create
