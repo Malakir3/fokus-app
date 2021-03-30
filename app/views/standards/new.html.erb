@@ -5,44 +5,48 @@
     すでに基準が登録されています
   </div>
 <% else %>
+  <div class="whole">
+    <% @menu.images.each do |image|%>
+      <div><%= image_tag image.variant(resize: '200x200'), class:'images' %></div>
+    <% end %>
+  </div>
   <%= form_with model: [@menu, @standard], local: true do |f| %>
+  <%# 大盛り、普通、小盛りを定義 %>
+  <% value_1 = @menu.amount / 3 %>
+  <% value_2 = @menu.amount / 2 %>
+  <% value_3 = @menu.amount %>
+  <% value_4 = @menu.amount * 2 %>
+  <% value_5 = @menu.amount * 3 %>
+  <% value_n = "任意入力の値" %>
+  <%# /大盛り、普通、小盛りを定義 %>
 
-<%# 大盛り、普通、小盛りを定義 %>
-<% value_1 = @menu.amount / 3 %>
-<% value_2 = @menu.amount / 2 %>
-<% value_3 = @menu.amount %>
-<% value_4 = @menu.amount * 2 %>
-<% value_5 = @menu.amount * 3 %>
-<% value_n = "任意入力の値" %>
-<%# /大盛り、普通、小盛りを定義 %>
-
-  <div>
-    <%= f.label :large %>
-    <%= f.radio_button :large, :"#{value_5}" %><%= value_5 %><%= @menu.unit %>
-    <%= f.radio_button :large, :"#{value_4}" %><%= value_4 %><%= @menu.unit %>
-    <%= f.radio_button :large, :"#{value_3}" %><%= value_3 %><%= @menu.unit %>
-    <%= f.radio_button :large, :"#{value_2}" %><%= value_2 %><%= @menu.unit %>
-    <%= f.radio_button :large, :"#{value_1}" %><%= value_1 %><%= @menu.unit %>
-    <%= f.radio_button :large, :"#{value_n}" %>
-    <%#= f.text_field :large %>その他
-    <%= @menu.unit %>
-  </div>
-  <div>
-    <%= f.label :medium %>
-    <%= f.radio_button :medium, :"#{value_5}" %><%= value_5 %><%= @menu.unit %>
-    <%= f.radio_button :medium, :"#{value_4}" %><%= value_4 %><%= @menu.unit %>
-    <%= f.radio_button :medium, :"#{value_3}" %><%= value_3 %><%= @menu.unit %>
-    <%= f.radio_button :medium, :"#{value_2}" %><%= value_2 %><%= @menu.unit %>
-    <%= f.radio_button :medium, :"#{value_1}" %><%= value_1 %><%= @menu.unit %>
-  </div>
-  <div>
-    <%= f.label :small %>
-    <%= f.radio_button :small, :"#{value_5}" %><%= value_5 %><%= @menu.unit %>
-    <%= f.radio_button :small, :"#{value_4}" %><%= value_4 %><%= @menu.unit %>
-    <%= f.radio_button :small, :"#{value_3}" %><%= value_3 %><%= @menu.unit %>
-    <%= f.radio_button :small, :"#{value_2}" %><%= value_2 %><%= @menu.unit %>
-    <%= f.radio_button :small, :"#{value_1}" %><%= value_1 %><%= @menu.unit %>
-  </div>
+    <div>
+      <%= f.label :large %>
+      <%= f.radio_button :large, :"#{value_5}" %><%= value_5 %><%= @menu.unit %>
+      <%= f.radio_button :large, :"#{value_4}" %><%= value_4 %><%= @menu.unit %>
+      <%= f.radio_button :large, :"#{value_3}" %><%= value_3 %><%= @menu.unit %>
+      <%= f.radio_button :large, :"#{value_2}" %><%= value_2 %><%= @menu.unit %>
+      <%= f.radio_button :large, :"#{value_1}" %><%= value_1 %><%= @menu.unit %>
+      <%= f.radio_button :large, :"#{value_n}" %>
+      <%#= f.text_field :large %>その他
+      <%= @menu.unit %>
+    </div>
+    <div>
+      <%= f.label :medium %>
+      <%= f.radio_button :medium, :"#{value_5}" %><%= value_5 %><%= @menu.unit %>
+      <%= f.radio_button :medium, :"#{value_4}" %><%= value_4 %><%= @menu.unit %>
+      <%= f.radio_button :medium, :"#{value_3}" %><%= value_3 %><%= @menu.unit %>
+      <%= f.radio_button :medium, :"#{value_2}" %><%= value_2 %><%= @menu.unit %>
+      <%= f.radio_button :medium, :"#{value_1}" %><%= value_1 %><%= @menu.unit %>
+    </div>
+    <div>
+      <%= f.label :small %>
+      <%= f.radio_button :small, :"#{value_5}" %><%= value_5 %><%= @menu.unit %>
+      <%= f.radio_button :small, :"#{value_4}" %><%= value_4 %><%= @menu.unit %>
+      <%= f.radio_button :small, :"#{value_3}" %><%= value_3 %><%= @menu.unit %>
+      <%= f.radio_button :small, :"#{value_2}" %><%= value_2 %><%= @menu.unit %>
+      <%= f.radio_button :small, :"#{value_1}" %><%= value_1 %><%= @menu.unit %>
+    </div>
     <div>
       <%= f.submit '登録する' %>
     </div>

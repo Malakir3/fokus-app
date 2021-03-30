@@ -4,10 +4,11 @@
 分量：<%= @menu.amount %>（<%= @menu.unit %>）<br>
 カロリー：<%= @menu.calorie %>kcal<br>
 
-<% @menu.images.each do |image|%>
-  <p><%= image_tag image.variant(resize: '200x200'), class:'images' %></p>
-<% end %>
-
+<div class="whole">
+  <% @menu.images.each do |image|%>
+    <div><%= image_tag image.variant(resize_to_fit:[nil, 150]), class:'images' %></div>
+  <% end %>
+</div>
 <%= link_to '編集する', edit_menu_path(@menu.id) %>
 <%= link_to '削除する', menu_path(@menu.id), method: :delete %>
 

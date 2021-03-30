@@ -1,16 +1,18 @@
 <h1><%= @standard.menu.title%>の基準修正ページ</h1>
-
+  <div class="whole">
+    <% @menu.images.each do |image|%>
+      <div><%= image_tag image.variant(resize: '200x200'), class:'images' %></div>
+    <% end %>
+  </div>
 <%= form_with model: [@menu, @standard], local: true do |f| %>
-
-<%# 大盛り、普通、小盛りを定義 %>
-<% value_1 = @menu.amount / 3 %>
-<% value_2 = @menu.amount / 2 %>
-<% value_3 = @menu.amount %>
-<% value_4 = @menu.amount * 2 %>
-<% value_5 = @menu.amount * 3 %>
-<% value_n = "任意入力の値" %>
-<%# /大盛り、普通、小盛りを定義 %>
-
+  <%# 大盛り、普通、小盛りを定義 %>
+  <% value_1 = @menu.amount / 3 %>
+  <% value_2 = @menu.amount / 2 %>
+  <% value_3 = @menu.amount %>
+  <% value_4 = @menu.amount * 2 %>
+  <% value_5 = @menu.amount * 3 %>
+  <% value_n = "任意入力の値" %>
+  <%# /大盛り、普通、小盛りを定義 %>
   <div>
     <%= f.label :large %>
     <%= f.radio_button :large, :"#{value_5}" %><%= value_5 %><%= @menu.unit %>
