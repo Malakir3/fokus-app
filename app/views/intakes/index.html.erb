@@ -1,31 +1,127 @@
 <h1><%= current_user.nickname %>さんの実績リスト</h1>
+<%=link_to 'トップページへ戻る', root_path %><br>
+<%=link_to '実績を登録する（メニューリストへ）', menus_path %><br>
+_________________________________________
+<div class="whole">
+  <div class="left">
+    <% @intakes.each do |intake| %>
+      <%= link_to '詳細ページ',menu_intake_path(intake.menu_id, intake.id) %>
+      <%= link_to '編集ページ',edit_menu_intake_path(intake.menu_id, intake.id) %>
+      <%= link_to '削除',menu_intake_path(intake.menu_id, intake.id), method: :delete %><br>
 
-<% @intakes.each do |intake| %>
-  <div>
-    <%= link_to '詳細ページ',menu_intake_path(intake.menu_id, intake.id) %>
-    <%= link_to '編集ページ',edit_menu_intake_path(intake.menu_id, intake.id) %>
-    <%= link_to '削除',menu_intake_path(intake.menu_id, intake.id), method: :delete %><br>
-    年月日：<%= intake.date %><br>
-    時間帯：<%= Timing.find(intake.timing_id).name %><br>
-    メニュー名：<%= intake.menu.title %><br>
-    量(大・中・小)：
-    <%= intake_value = Value.find(intake.value_id).name %><br>
-    グラム数：
-    <% standard = @standards.where(menu_id: intake.menu_id) %>
-      <% if intake_value == '多め' %>
-        <%= standard[0].large %>
-      <% elsif intake_value == '普通' %>
-        <%= standard[0].medium %>
-      <% elsif intake_value == '少なめ' %>
-        <%= standard[0].small %>
+      年月日：<%= intake.date %><br>
+      時間帯：<%= Timing.find(intake.timing_id).name %><br>
+      メニュー名：<%= intake.menu.title %><br>
+      量：
+      <%= @intake_value = Value.find(intake.value_id).name %><br>
+      
+      <% if Standard.where(menu_id: intake.menu_id) == [] %>
+        <%= "*#{intake.menu.title}の基準は登録されていません(計算対象外です)。"%><br>
+        <%= link_to "#{intake.menu.title}の基準を登録する",new_menu_standard_path(intake.menu_id)%> <br>
       <% else %>
-        任意の量
+        <%# 変数の定義 %>
+          <% menu_cal = intake.menu.calorie %>
+          <% menu_amount = intake.menu.amount %>
+          <% standard = @standards.where(menu_id: intake.menu_id) %>    
+          <% stn_large = standard[0].large %>
+          <% stn_medium = standard[0].medium %>
+          <% stn_small = standard[0].small %>
+        <%#// 変数の定義 %>
+        グラム数：
+          <% if @intake_value == '多め' %>
+            <%= stn_large %>
+          <% elsif @intake_value == '普通' %>
+            <%= stn_medium %>
+          <% elsif @intake_value == '少なめ' %>
+            <%= stn_small %>
+          <% else %>
+            任意の量
+          <% end %>
+        g<br>
+        
+        カロリー：
+          <% if @intake_value == '多め' %>
+            <%= menu_cal * stn_large / menu_amount %>
+          <% elsif @intake_value == '普通' %>
+            <%= menu_cal * stn_medium / menu_amount %>
+          <% elsif @intake_value == '少なめ' %>
+            <%= menu_cal * stn_small / menu_amount %>
+          <% else %>
+            任意の量
+          <% end %>
+        kcal<br>
       <% end %>
-    g<br>
-    カロリー：〇〇 kcal<br>
-  
-    ___________________________________
+      ___________________________________<br>
+    <% end %>
   </div>
-<% end %>
+<%# 日毎のカロリー集計 %>
+  <div class="right">
+    <h2>一日毎のカロリー合計</h2>
+    <% days_ary = [] %>
+    <% cals_ary = [] %>
+    <% day_cal = 0 %>
+    <% one_cal = 0 %>
 
+    <% @intakes.each_with_index do |intake, i| %>
+      <% @intake_value = Value.find(intake.value_id).name %><br>
+
+      <% unless Standard.where(menu_id: intake.menu_id) == [] %>
+          <%# 変数の定義 %>
+            <% menu_cal = intake.menu.calorie %>
+            <% menu_amount = intake.menu.amount %>
+            <% standard = @standards.where(menu_id: intake.menu_id) %>    
+            <% stn_large = standard[0].large %>
+            <% stn_medium = standard[0].medium %>
+            <% stn_small = standard[0].small %>
+          <%#// 変数の定義 %>
+          <%# カロリーの計算 %>
+            <% if @intake_value == '多め' %>
+              <% one_cal = menu_cal * stn_large / menu_amount %>
+            <% elsif @intake_value == '普通' %>
+              <% one_cal = menu_cal * stn_medium / menu_amount %>
+            <% elsif @intake_value == '少なめ' %>
+              <% one_cal = menu_cal * stn_small / menu_amount %>
+            <% else %>
+              任意の量
+            <% end %>
+          <%#// カロリーの計算 %>
+
+          <%# ary配列に今回のintakeの日付が入っていない場合 %>
+        <% unless days_ary.include?(intake.date) %>
+          <%# 一番最初の例外処理 %>
+          <% if days_ary == [] %>
+            <% days_ary << intake.date %>
+            <% day_cal = 0 %>
+            <% day_cal += one_cal %>
+          <%# //一番最初の例外処理 %>
+          <% else %>
+            <% days_ary << intake.date %>
+            <% cals_ary << day_cal %>
+            <% day_cal = 0 %>
+            <% day_cal += one_cal %>
+          <% end %>
+        <% else %>
+          <% day_cal += one_cal %>
+        <% end %>
+        <%# 一番最後の例外処理 %>
+          <% if i == @intakes.length - 1 %>
+            <% cals_ary << day_cal %>
+          <% end %>
+        <%# //一番最後の例外処理 %>
+      <% end %>
+    <% end %>
+
+    <%# 日毎のカロリー集計 %>
+    <% for num in 0..(days_ary.length - 1)  do %>
+      <%= "#{days_ary[num]}: 合計#{cals_ary[num]}kcal "%><br>
+    <% end %>
+    <%# //日毎のカロリー集計 %>
+  </div>
+
+<%# 確認用：cals_ary：<%= cals_ary %><br>
+<%# 確認用：days_ary：<%= days_ary %><br> 
+<%# 確認用：day_cal：<%= day_cal %><br> 
+<%# 確認用：one_cal：<%= one_cal %><br> 
+
+</div>
 <%=link_to 'トップページへ戻る', root_path %>
