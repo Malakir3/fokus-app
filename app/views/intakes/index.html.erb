@@ -1,5 +1,6 @@
 <h1><%= current_user.nickname %>さんの実績リスト</h1>
 <%=link_to 'トップページへ戻る', root_path %><br>
+<%=link_to '実績を登録する（メニューリストへ）', menus_path %><br>
 _________________________________________
 <div class="whole">
   <div class="left">
@@ -15,7 +16,7 @@ _________________________________________
       <%= @intake_value = Value.find(intake.value_id).name %><br>
       
       <% if Standard.where(menu_id: intake.menu_id) == [] %>
-        *このメニューにはあなたの基準が登録されていません。<br>
+        <%= "*#{intake.menu.title}の基準は登録されていません(計算対象外です)。"%><br>
         <%= link_to "#{intake.menu.title}の基準を登録する",new_menu_standard_path(intake.menu_id)%> <br>
       <% else %>
         <%# 変数の定義 %>
