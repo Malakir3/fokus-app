@@ -6,7 +6,7 @@
 
 <div class="whole">
   <% @menu.images.each do |image|%>
-    <div><%= image_tag image.variant(resize_to_fit:[nil, 150]), class:'images' %></div>
+    <div><%= image_tag image.variant(resize_to_fill:[150, 150]), class:'images' %></div>
   <% end %>
 </div>
 <%= link_to '編集する', edit_menu_path(@menu.id) %>
