@@ -1,6 +1,8 @@
 <% if user_signed_in? %>
     <li><%= "#{current_user.nickname}でログイン中" %></li>
     <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+    <p><%= link_to "#{current_user.nickname}さんの基準一覧を見る",standards_path %></p>
+    <p><%= link_to "#{current_user.nickname}さんの食事履歴を見る",intakes_path %></p>
 <% else %>
     <p>ログインしていません</p>
     <li><%= link_to 'ログイン', new_user_session_path %></li>
@@ -8,5 +10,3 @@
 <% end %>
 
 <p><%= link_to 'メニュー一覧を見る',menus_path %></p>
-<p><%= link_to "#{current_user.nickname}さんの基準一覧を見る",standards_path %></p>
-<p><%= link_to "#{current_user.nickname}さんの食事履歴を見る",intakes_path %></p>
