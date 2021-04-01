@@ -1,36 +1,66 @@
-<h1>メニュー新規作成ページ</h1>
+<%= render "shared/header"%>
 
-<%= form_with model: @menu, local: true do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title, placeholder: '例）ハンバーグ', autofocus: true %>
-  </div>
-  <div>
-  <div>
-    <%= f.label :amount %>
-    <%= f.text_field :amount, placeholder: '例）300' %>
+<div class="container-fluid">
+  <div class="row">
 
-    <%= f.label :unit %>
-    <%= f.text_field :unit, placeholder: '例）個, g, mL ' %>
+  <%= render "shared/nav-bar"%>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <%# メイン画面のヘッダー部分 %>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">メニュー新規作成ページ</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+            <%= link_to '新規作成（開発者用）', new_menu_path %>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+            Export
+            </button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            This week
+          </button>
+        </div>
+      </div>
+      <%# //メイン画面のヘッダー部分 %>
+      <%# メイン画面の内容部分 %>
+      <%= form_with model: @menu, local: true do |f| %>
+        <div>
+          <%= f.label :title %>
+          <%= f.text_field :title, placeholder: '例）ハンバーグ', autofocus: true %>
+        </div>
+        <div>
+        <div>
+          <%= f.label :amount %>
+          <%= f.text_field :amount, placeholder: '例）300' %>
+
+          <%= f.label :unit %>
+          <%= f.text_field :unit, placeholder: '例）個, g, mL ' %>
+        </div>
+        <div>
+          <%= f.label :calorie %>
+          <%= f.text_field :calorie, placeholder: '例）450' %>kcal
+        </div>
+        <div>
+          <%= f.label :bar_code %>
+          <%= f.text_field :bar_code, placeholder: '例）0123456789' %>
+        </div>
+        <div class="image-selects">
+          <p>
+          クリックしてファイルをアップロード
+          </p>
+          <%= f.label :images %>
+          <%= f.file_field :images, name: 'menu[images][]', id:"menu-image" %>
+        </div>
+          <%# JavaScriptによる画像挿入用要素 %>
+          <div id="image-list"></div>
+        <div>
+          <%= f.submit '登録する' %>
+        </div>
+      <% end %>
+      <%# //メイン画面の内容部分 %>
   </div>
-  <div>
-    <%= f.label :calorie %>
-    <%= f.text_field :calorie, placeholder: '例）450' %>kcal
-  </div>
-  <div>
-    <%= f.label :bar_code %>
-    <%= f.text_field :bar_code, placeholder: '例）0123456789' %>
-  </div>
-  <div class="image-selects">
-    <p>
-    クリックしてファイルをアップロード
-    </p>
-    <%= f.label :images %>
-    <%= f.file_field :images, name: 'menu[images][]', id:"menu-image" %>
-  </div>
-    <%# JavaScriptによる画像挿入用要素 %>
-    <div id="image-list"></div>
-  <div>
-    <%= f.submit '登録する' %>
-  </div>
-<% end %>
+</div>
+

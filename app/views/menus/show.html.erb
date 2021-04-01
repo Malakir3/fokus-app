@@ -1,22 +1,57 @@
-<h1>メニュー詳細ページ</h1>
+<%= render "shared/header"%>
 
-メニュー名：<%= @menu.title %><br>
-分量：<%= @menu.amount %>（<%= @menu.unit %>）<br>
-カロリー：<%= @menu.calorie %>kcal<br>
+<div class="container-fluid">
+  <div class="row">
 
-<div class="whole">
-  <% @menu.images.each do |image|%>
-    <div><%= image_tag image.variant(resize_to_fill:[150, 150]), class:'images' %></div>
-  <% end %>
+  <%= render "shared/nav-bar"%>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <%# メイン画面のヘッダー部分 %>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">メニュー詳細ページ</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+            <%= link_to '新規作成（開発者用）', new_menu_path %>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+            Export
+            </button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            This week
+          </button>
+        </div>
+      </div>
+      <%# //メイン画面のヘッダー部分 %>
+      <%# メイン画面の内容部分 %>
+      <div>
+        メニュー名：<%= @menu.title %><br>
+        分量：<%= @menu.amount %>（<%= @menu.unit %>）<br>
+        カロリー：<%= @menu.calorie %>kcal<br>
+      </div>
+      <div class="whole">
+        <% @menu.images.each do |image|%>
+          <div><%= image_tag image.variant(resize_to_fill:[150, 150]), class:'images' %></div>
+        <% end %>
+      </div>
+      <%= link_to '編集する', edit_menu_path(@menu.id) %>
+      <%= link_to '削除する', menu_path(@menu.id), method: :delete %>
+
+      <%# 基準がまだ登録されていない場合に表示 %>
+      <% if Standard.where(user_id: current_user.id, menu_id: @menu.id) == []%>
+        <h3><%= link_to 'Fokus! 基準を登録する', new_menu_standard_path(@menu.id) %></h3>
+      <% end %>
+      <%# /基準がまだ登録されていない場合に表示 %>
+
+      <p><%= link_to '実績を登録する', new_menu_intake_path(@menu.id) %></p>
+      <p><%= link_to 'メニュー一覧へ戻る', menus_path %></p>
+      <%# //メイン画面の内容部分 %>
+  </div>
 </div>
-<%= link_to '編集する', edit_menu_path(@menu.id) %>
-<%= link_to '削除する', menu_path(@menu.id), method: :delete %>
 
-<%# 基準がまだ登録されていない場合に表示 %>
-<% if Standard.where(user_id: current_user.id, menu_id: @menu.id) == []%>
-  <h3><%= link_to 'Fokus! 基準を登録する', new_menu_standard_path(@menu.id) %></h3>
-<% end %>
-<%# /基準がまだ登録されていない場合に表示 %>
+<%= render "shared/footer"%>
 
-<p><%= link_to '実績を登録する', new_menu_intake_path(@menu.id) %></p>
-<p><%= link_to 'メニュー一覧へ戻る', menus_path %></p>
+
+
