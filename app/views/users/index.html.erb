@@ -1,12 +1,27 @@
-<% if user_signed_in? %>
-    <li><%= "#{current_user.nickname}でログイン中" %></li>
-    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-    <p><%= link_to "#{current_user.nickname}さんの基準一覧を見る",standards_path %></p>
-    <p><%= link_to "#{current_user.nickname}さんの食事履歴を見る",intakes_path %></p>
-<% else %>
-    <p>ログインしていません</p>
-    <li><%= link_to 'ログイン', new_user_session_path %></li>
-    <li><%= link_to '新規登録', new_user_path %></li>
-<% end %>
+<%= render "shared/header"%>
 
-<p><%= link_to 'メニュー一覧を見る',menus_path %></p>
+<div class="container-fluid">
+  <div class="row">
+
+    <%= render "shared/nav-bar"%>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">トップページ</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to '新規作成（開発者用）', new_menu_path %></button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+            <span data-feather="calendar"></span>
+            This week
+          </button>
+        </div>
+      </div>
+
+
+
+</div>
+</div>
+<%= render "shared/footer"%>
