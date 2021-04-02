@@ -3,6 +3,7 @@ class StandardsController < ApplicationController
   def index
     @standards = Standard.includes(:menu).where(user_id: current_user.id)
     @menus = Menu.all
+    @cal_results = Standard.calorie_cal(@standards)
   end
 
   def new
