@@ -9,6 +9,7 @@ class StandardsController < ApplicationController
   def new
     @standard = Standard.new
     @menu = Menu.find(params[:menu_id])
+    @amount_cal = Standard.amount_cal(@menu)
   end
 
   def create
@@ -23,6 +24,7 @@ class StandardsController < ApplicationController
 
   def show
     @standard = Standard.find(params[:id])
+    @cal_result = Standard.calorie_cal(@standard)
   end
 
   def edit

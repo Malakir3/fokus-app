@@ -10,6 +10,11 @@ class Standard < ApplicationRecord
 
   def self.calorie_cal(targets)
     stn_ary = []
+    if targets[0] == nil
+      ary = []
+      ary << targets
+      targets = ary
+    end      
     targets.each do |standard|
       stn_hash = {}
       
@@ -36,5 +41,20 @@ class Standard < ApplicationRecord
       stn_ary << stn_hash
     end
     return stn_ary
+  end
+
+  def self.amount_cal(menu)
+    amount_ary = []
+    value_1 = menu.amount / 3
+    value_2 = menu.amount / 2
+    value_3 = menu.amount
+    value_4 = menu.amount * 2
+    value_5 = menu.amount * 3
+
+    amount_ary << value_1
+    amount_ary << value_2
+    amount_ary << value_3
+    amount_ary << value_4
+    amount_ary << value_5
   end
 end
