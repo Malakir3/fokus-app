@@ -30,6 +30,7 @@ class StandardsController < ApplicationController
   def edit
     @standard = Standard.find(params[:id])
     @menu = @standard.menu
+    @amount_cal = Standard.amount_cal(@menu)
   end
 
   def update
