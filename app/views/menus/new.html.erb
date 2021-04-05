@@ -11,6 +11,7 @@
 
       <%# メイン画面の内容部分 %>
       <%= form_with model: @menu, local: true do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
         <div>
           <%= f.label :title %>
           <%= f.text_field :title, placeholder: '例）ハンバーグ', autofocus: true %>

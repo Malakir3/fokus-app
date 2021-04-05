@@ -2,6 +2,10 @@
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <%# <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> %>
     <h1 class="h3 mb-3 fw-normal">サインイン</h1>
+      <div class="login-flash-message">
+        <%= flash[:notice] %>
+        <%= flash[:alert] %>
+      </div>
       <div class="field">
         <%= f.label :inputEmail, class:"visually-hidden" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "inputEmail", placeholder: "メールアドレス" %>

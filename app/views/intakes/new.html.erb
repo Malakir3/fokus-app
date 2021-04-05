@@ -10,6 +10,7 @@
     <%# メイン画面の内容部分 %>
       <h2>食事実績登録</h2>
       <%= form_with model: [@menu, @intake], local: true do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
       <div>
         <%= f.label :date %><br />
         <%= f.date_select :date, start_year: 2021, end_year: 2021 %>

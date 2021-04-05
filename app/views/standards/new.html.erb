@@ -27,6 +27,7 @@
             </div>
           <% else %>
             <%= form_with model: [@menu, @standard], local: true do |f| %>
+            <%= render 'layouts/error_messages', model: f.object %>
             <div>
               <%= f.label :large %>
               <%= f.radio_button :large, :"#{@amount_cal[4]}" %><%= @amount_cal[4] %><%= @menu.unit %>
