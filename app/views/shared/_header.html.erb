@@ -1,0 +1,25 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <%= link_to 'Fokus', root_path, class: "navbar-brand col-md-3 col-lg-2 me-0 px-3" %>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <%# 全画面では何故か表示されない %>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <ul class="navbar-nav px-3">
+  <% if user_signed_in? %>
+    <li class="nav-item text-nowrap">
+    <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', method: :delete %>
+    </li>
+    <li class="nav-item text-nowrap">
+    <%= link_to "#{current_user.nickname}", user_path(current_user.id), class: 'nav-link' %>
+    </li>
+  <% else %>
+    <li class="nav-item text-nowrap">
+    <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
+    </li>
+    <li class="nav-item text-nowrap">
+    <%= link_to '新規登録', new_user_registration_path, class: 'nav-link' %>
+    </li>
+  <% end %>
+  </ul>
+</header>

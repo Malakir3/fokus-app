@@ -1,8 +1,22 @@
-<h1>登録完了ページ</h1>
+<%= render "shared/header"%>
 
-<div>
-<%= @standard.menu.title %>の基準が新規登録されました。
-<div>
+<div class="container-fluid">
+  <div class="row">
 
-<%= link_to '食事実績一覧へ戻る', intakes_path %><br>
-<%= link_to 'メニュートップへ戻る', menus_path %>
+  <%= render "shared/nav-bar"%>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+      <%= render "shared/standards_header" %>
+
+      <%# メイン画面の内容部分 %>
+      <div>
+      <%= @standard.menu.title %>の基準が新規登録されました。<br>
+      <%= link_to '食事実績一覧', intakes_path %><br>
+      <%= link_to 'メニュートップ', menus_path %>
+      <div>
+      <%# //メイン画面の内容部分 %>
+  </div>
+</div>
+
+<%= render "shared/footer"%>

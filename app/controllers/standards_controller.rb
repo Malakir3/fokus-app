@@ -3,11 +3,13 @@ class StandardsController < ApplicationController
   def index
     @standards = Standard.includes(:menu).where(user_id: current_user.id)
     @menus = Menu.all
+    @cal_results = Standard.calorie_cal(@standards)
   end
 
   def new
     @standard = Standard.new
     @menu = Menu.find(params[:menu_id])
+    @amount_cal = Standard.amount_cal(@menu)
   end
 
   def create
@@ -22,11 +24,13 @@ class StandardsController < ApplicationController
 
   def show
     @standard = Standard.find(params[:id])
+    @cal_result = Standard.calorie_cal(@standard)
   end
 
   def edit
     @standard = Standard.find(params[:id])
     @menu = @standard.menu
+    @amount_cal = Standard.amount_cal(@menu)
   end
 
   def update

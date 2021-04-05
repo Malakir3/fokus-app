@@ -1,7 +1,19 @@
-<h1>登録完了ページ</h1>
+<%= render "shared/header"%>
 
-<div>
-<%= @intake.menu.title %>の実績が登録されました。
-<div>
+<div class="container-fluid">
+  <div class="row">
 
-<%= link_to 'メニュートップへ戻る', menus_path %>
+    <%= render "shared/nav-bar"%>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+    <%= render "shared/intakes_header" %>
+    <%# メイン画面の内容部分 %>
+      <h2>登録完了</h2>
+      <div>
+      <%= @intake.menu.title %>の食事実績が登録されました。
+      <div>
+      <%= link_to 'メニューリスト', menus_path %>
+    </main>
+  </div>
+</div>
+<%= render "shared/footer"%>
