@@ -15,12 +15,17 @@ class StandardsController < ApplicationController
   end
 
   def create
-    @standard = Standard.new(standard_params)
-    if @standard.valid?
-      Standard.create(standard_params)
+    if params[:standard] == nil
+      redirect_to new_menu_standard_path
     else
-      set_menu
-      render :new
+      @standard = Standard.new(standard_params)
+      if @standard.valid?
+        Standard.create(standard_params)
+      else
+        set_menu
+        @amount_cal = Standard.amount_cal(@menu)
+        render :new
+      end
     end
   end
 

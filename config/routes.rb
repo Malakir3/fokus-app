@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'users#index'
+  root 'menus#index'
   resources :users, only: [:show]
   resources :standards, only: :index
   resources :intakes, only: :index

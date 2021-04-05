@@ -6,4 +6,11 @@ class User < ApplicationRecord
 
   has_many :standards
   has_many :intakes
+
+  with_options presence: true do
+    validates :firstname
+    validates :lastname
+    validates :nickname
+    validates :birthday
+  end
 end

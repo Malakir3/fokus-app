@@ -8,6 +8,7 @@ class Menu < ApplicationRecord
     validates :amount
     validates :unit
     validates :calorie
+    validates :images, presence: { message: 'を添付してください' }
   end
 
   with_options numericality: { greater_than: 0 } do
@@ -15,5 +16,5 @@ class Menu < ApplicationRecord
     validates :calorie
   end
 
-  validates :bar_code, format: { with: /\A[0-9]+\z/, message: '0から9の数字のみを使って入力してください' }
+  validates :bar_code, format: { with: /\A[0-9]+\z/, message: 'は0から9の数字のみで入力してください' }
 end
