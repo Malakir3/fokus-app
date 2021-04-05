@@ -1,3 +1,88 @@
+<%= render "shared/header"%>
+
+<div class="container-fluid">
+  <div class="row">
+
+    <%= render "shared/nav-bar"%>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+    <%= render "shared/intakes_header" %>
+    <%# メイン画面の内容部分 %>
+      <h2>食事履歴詳細</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>選択</th>
+              <th>日付</th>
+              <th>時間帯</th>
+              <th>メニュー名</th>
+              <th>感覚量</th>
+              <th>分量</th>
+              <th>カロリー</th>
+              <th>other</th>
+            </tr>
+          </thead>
+          <tbody>
+          <%# 変数の定義 %>
+            <% menu_cal = @intake.menu.calorie %>
+            <% menu_amount = @intake.menu.amount %>
+            <% standard = @standards.where(menu_id: @intake.menu_id) %>    
+            <% stn_large = standard[0].large %>
+            <% stn_medium = standard[0].medium %>
+            <% stn_small = standard[0].small %>
+          <%#// 変数の定義 %>
+            <td>
+              <div class="btn-group">
+                <%= link_to '編集', edit_menu_intake_path(@intake.menu_id, @intake.id), class: "btn btn-sm btn-outline-secondary" %>
+                <%= link_to '削除', menu_intake_path(@intake.menu_id, @intake.id), method: :delete, class: "btn btn-sm btn-outline-secondary" %>
+              </div>
+            </td>
+            <td>
+              <%= @intake.date %>
+            </td>
+            <td>
+              <%= Timing.find(@intake.timing_id).name %>
+            </td>
+            <td>
+              <%= @intake.menu.title %>
+            </td>
+            <td>
+              <%= @intake_value = Value.find(@intake.value_id).name %>
+            </td>
+            <td>
+              <% if @intake_value == '多め' %>
+                <%= stn_large %>
+              <% elsif @intake_value == '普通' %>
+                <%= stn_medium %>
+              <% elsif @intake_value == '少なめ' %>
+                <%= stn_small %>
+              <% else %>
+                任意の量
+              <% end %>
+            g
+            </td>
+            <td>
+              <% if @intake_value == '多め' %>
+                <%= menu_cal * stn_large / menu_amount %>
+              <% elsif @intake_value == '普通' %>
+                <%= menu_cal * stn_medium / menu_amount %>
+              <% elsif @intake_value == '少なめ' %>
+                <%= menu_cal * stn_small / menu_amount %>
+              <% else %>
+                任意の量
+              <% end %>
+            kcal
+            </td>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+<%= render "shared/footer"%>
+
+
 <%# 変数の定義 %>
   <% menu_cal = @intake.menu.calorie %>
   <% menu_amount = @intake.menu.amount %>
