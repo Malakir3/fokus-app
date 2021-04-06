@@ -5,6 +5,8 @@ class IntakesController < ApplicationController
   def index
     @intakes = Intake.includes(:menu).where(user_id: current_user.id)
     set_standards
+    Graph.destroy_graph(Graph.all)
+    Graph.create_graph(@intakes, @standards)
   end
 
   def new

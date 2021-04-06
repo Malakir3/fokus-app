@@ -8,6 +8,12 @@
 
     <%= render "shared/intakes_header" %>
     <%# メイン画面の内容部分 %>
+      <%# グラフ表示 %>
+      <div>
+      <%= column_chart Graph.group(:date).sum(:calorie),
+      colors: ["coral"], xtitle: "日付", ytitle: "kcal", stacked: true %>
+      </div>
+      <%# //グラフ表示 %>        
       <h2>食事履歴一覧</h2>
       <div class="table-responsive">
         <table class="table table-striped table-sm">
@@ -159,7 +165,8 @@
             <%= "#{days_ary[num]}: 合計#{cals_ary[num]}kcal "%><br>
           <% end %>
           <%# //日毎のカロリー集計 %>
-      </div>
+        </div>
+        <%#// 日毎のカロリー計算 %>
     <%# //メイン画面の内容部分 %>
     </main>
   </div>

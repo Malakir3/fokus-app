@@ -8,9 +8,4 @@ Rails.application.routes.draw do
     resources :standards, except: :index
     resources :intakes, except: :index
   end
-  resources :graphs, only:[:index, :create] do
-    collection do
-      delete 'erase'
-    end
-  end
 end
