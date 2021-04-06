@@ -21,25 +21,22 @@
             <%= image_tag image.variant(resize_to_fill:[150, 150]), class:'images' %>
           <% end %>
           </div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 gx-3">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 gx-3 my-3">
+            <% i = 4 %>
             <% 5.times do %>
-            <div class="row col justify-content-center">
-              <div class="col">
-              <%= @menu.amount %>（<%= @menu.unit %>）
+            <%# <div class="row col justify-content-around"> %>
+              <div class="col d-flex justify-content-around">
+              <%= @menu_list[i][:value] %> <%= @menu.unit %>
+              (<%= @menu_list[i][:calorie] %> kcal)
               </div>
-              <div class="col">
-              特盛
-              </div>
-              <div class="col">
-              <%= @menu.calorie %>kcal
-              </div>
-            </div>
+            <%# </div> %>
+            <% i -= 1 %>
             <% end %>
           </div>
         </div>
         <div class="row row-cols-1 row-cols-sm-2 g-0">
           <div class="col justify-content-between align-items-center">
-            <div class="btn-group">
+            <div class="btn-group my-3">
               <%= link_to '削除', menu_path(@menu.id), method: :delete, class: "btn btn-sm btn-outline-secondary" %>
               <%= link_to '編集', edit_menu_path(@menu.id), class: "btn btn-sm btn-outline-secondary" %>
             </div>

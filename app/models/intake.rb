@@ -9,7 +9,7 @@ class Intake < ApplicationRecord
 
   validates :date, presence: true
 
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 1, message: 'を選択してください' } do
     validates :timing_id
     validates :value_id
   end

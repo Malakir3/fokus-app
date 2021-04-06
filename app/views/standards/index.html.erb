@@ -21,25 +21,27 @@
               </tr>
             </thead>
             <tbody>
-            <% @cal_results.each do |result| %>
-              <tr>
-                <td>
-                  <%= link_to result[:title], menu_standard_path(result[:menu_id], result[:id]) %>
-                </td>
-                <td>
-                  <%= "#{result[:large_amount]}(#{result[:unit]})"%>
-                  <%= result[:large_cal] %>kcal
-                </td>
-                <td>
-                  <%= "#{result[:medium_amount]}(#{result[:unit]})"%>
-                  <%= result[:medium_cal] %>kcal
-                </td>
-                <td>
-                  <%= "#{result[:small_amount]}(#{result[:unit]})"%>
-                  <%= result[:small_cal] %>kcal
-                </td>
-                <td>other</td>
-              </tr>
+            <% unless @standards == []%>
+              <% @cal_results.each do |result| %>
+                <tr>
+                  <td>
+                    <%= link_to result[:title], menu_standard_path(result[:menu_id], result[:id]) %>
+                  </td>
+                  <td>
+                    <%= "#{result[:large_amount]}(#{result[:unit]})"%>
+                    <%= result[:large_cal] %>kcal
+                  </td>
+                  <td>
+                    <%= "#{result[:medium_amount]}(#{result[:unit]})"%>
+                    <%= result[:medium_cal] %>kcal
+                  </td>
+                  <td>
+                    <%= "#{result[:small_amount]}(#{result[:unit]})"%>
+                    <%= result[:small_cal] %>kcal
+                  </td>
+                  <td>other</td>
+                </tr>
+              <% end %>
             <% end %>
             </tbody>
           </table>

@@ -18,6 +18,7 @@ class MenusController < ApplicationController
 
   def show
     @menu = Menu.find(params[:id])
+    @menu_list = Menu.menu_list(@menu)
   end
 
   def edit

@@ -1,0 +1,21 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+       firstname: 名前
+       lastname: 苗字
+     menu:
+       title: メニュー名
+       amount: 分量
+       unit: 単位
+       calorie: カロリー
+       bar_code: バーコード
+       images: 画像
+     standard:
+       large: 大盛り
+       medium: 普通
+       small: 小盛り
+     intake:
+       timing_id: タイミング
+       value_id: 量

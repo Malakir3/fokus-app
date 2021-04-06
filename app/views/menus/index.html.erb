@@ -15,17 +15,17 @@
               <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <% @menus.each do |menu| %>
                 <div class="col">
-                  <div class="card shadow-sm">
-                    <%= link_to image_tag(menu.images[2].variant(resize_to_fill:[250, 250])), menu_path(menu.id) %>
-                    <div class="card-title">
-                      <%= link_to menu.title, menu_path(menu.id), class: "card-text" %>
-                      <div class="d-flex justify-content-between align-items-center">
+                  <div class="card shadow-sm ">
+                    <%= link_to image_tag(menu.images[2].variant(resize_to_fill:[250, 250])), menu_path(menu.id), class: "d-flex justify-content-center" %>
+                    <div class="card-title ">
+                      <%= link_to menu.title, menu_path(menu.id), class: "card-text d-flex justify-content-center" %>
+                      <div class="d-flex justify-content-around align-items-center">
                         <div class="btn-group">
                           <%= link_to '詳細', menu_path(menu.id), class: "btn btn-sm btn-outline-secondary" %>
                           <%= link_to '編集', edit_menu_path(menu.id), class: "btn btn-sm btn-outline-secondary" %>
                         </div>
                         <small class="text-muted">
-                          <%= menu.calorie %>kcal
+                          <%= menu.calorie %> kcal
                         </small>
                       </div>
                     </div>
