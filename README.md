@@ -44,6 +44,7 @@
 - has_many :standards
 - has_many :intakes
 
+
 ## Standardsテーブル
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -57,6 +58,7 @@
 - belongs_to :user
 - belongs_to :menu
 
+
 ## Intakesテーブル
 | Column    | Type       | Options                        |
 | --------- | ---------- | ------------------------------ |
@@ -69,3 +71,13 @@
 ### Association
 - belongs_to :user
 - belongs_to :menu
+
+
+## Graphsテーブル
+| Column  | Type    | Options     |
+| ------- | ------- | ----------- |
+| date    | date    | null: false |
+| calorie | integer | null: false |
+
+### Association
+- none
