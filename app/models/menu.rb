@@ -16,7 +16,7 @@ class Menu < ApplicationRecord
     validates :calorie
   end
 
-  validates :bar_code, format: { with: /\A[0-9]+\z/, message: 'は0から9の数字のみで入力してください' }
+  validates :bar_code, format: { with: /\A[0-9]*\z/, message: 'は0から9の数字のみで入力してください' }
 
   def self.menu_list(menu)
     menu_ary = []
