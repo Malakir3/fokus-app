@@ -5,6 +5,7 @@ ja:
        nickname: ニックネーム
        firstname: 名前
        lastname: 苗字
+       birthday: 生年月日
      menu:
        title: メニュー名
        amount: 分量
