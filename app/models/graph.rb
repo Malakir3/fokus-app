@@ -1,5 +1,6 @@
 class Graph < ApplicationRecord
   validates :date, :calorie ,presence: true
+  validates :calorie, numericality: { greater_than: 0 }
 
   def self.create_graph(intakes, standards)
     create_graph_hash = {}

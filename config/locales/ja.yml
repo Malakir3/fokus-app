@@ -21,3 +21,6 @@ ja:
        date: 日付
        timing_id: タイミング
        value_id: 量
+     graph:
+       date: 日付
+       calorie: カロリー
