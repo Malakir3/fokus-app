@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Menu, type: :model do
-  before do
-    @menu = FactoryBot.build(:menu)
-  end
-
   describe 'メニュー登録' do
+    before do
+      @menu = FactoryBot.build(:menu)
+    end
+
     context 'メニュー登録できるとき' do
       it 'title, amount, unit, calorie, bar_code, imagesが存在すれば登録できる' do
         expect(@menu).to be_valid

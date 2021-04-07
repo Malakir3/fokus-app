@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Standard, type: :model do
-  before do
-    @standard = FactoryBot.build(:standard)
-  end
-
   describe '基準登録' do
+    before do
+      @standard = FactoryBot.build(:standard)
+    end
+
     context '基準登録できるとき' do
       it 'large, medium, smallが存在し、userとmenuとに紐づいていれば登録できる' do
         expect(@standard).to be_valid
@@ -81,6 +81,18 @@ RSpec.describe Standard, type: :model do
         @standard.small = 0
         @standard.valid?
         expect(@standard.errors.full_messages).to include('小盛りを選択してください')
+      end
+
+      it 'userに紐づいていなければ登録できない' do
+        @standard.user = nil
+        @standard.valid?
+        expect(@standard.errors.full_messages).to include('Userを入力してください')
+      end
+
+      it 'menuに紐づいていなければ登録できない' do
+        @standard.menu = nil
+        @standard.valid?
+        expect(@standard.errors.full_messages).to include('Menuを入力してください')
       end
     end
   end

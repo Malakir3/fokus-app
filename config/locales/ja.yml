@@ -18,5 +18,6 @@ ja:
        medium: 普通
        small: 小盛り
      intake:
+       date: 日付
        timing_id: タイミング
        value_id: 量
