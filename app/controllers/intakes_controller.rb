@@ -3,10 +3,9 @@ class IntakesController < ApplicationController
   before_action :move_to_index, only: [:show, :edit, :update, :destroy]
 
   def index
-    @intakes = Intake.includes(:menu).where(user_id: current_user.id)
+    @intakes = Intake.includes(:menu).where(user_id: current_user.id).order("date DESC").order("timing_id DESC")
     set_standards
     Graph.destroy_graph(Graph.all)
-    Graph.create_graph(@intakes, @standards)
   end
 
   def new

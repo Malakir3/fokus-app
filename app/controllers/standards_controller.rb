@@ -3,7 +3,7 @@ class StandardsController < ApplicationController
   before_action :move_to_index, only: [:show, :edit, :update, :destroy]
 
   def index
-    @standards = Standard.includes(:menu).where(user_id: current_user.id)
+    @standards = Standard.includes(:menu).where(user_id: current_user.id).order("created_at DESC")
     @menus = Menu.all
     @cal_results = Standard.calorie_cal(@standards) unless @standards == []
   end

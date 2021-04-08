@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :standards, except: :index
     resources :intakes, except: :index
   end
+  resources :graphs, only: :create
 end
