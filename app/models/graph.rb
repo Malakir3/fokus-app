@@ -16,11 +16,12 @@ class Graph < ApplicationRecord
       stn_small = standard[0].small
       intake_value = Value.find(intake.value_id).name
 
-      if intake_value == '多め'
+      case intake_value
+      when '多め'
         calorie = menu_cal * stn_large / menu_amount
-      elsif intake_value == '普通'
+      when '普通'
         calorie = menu_cal * stn_medium / menu_amount
-      elsif intake_value == '少なめ'
+      when '少なめ'
         calorie = menu_cal * stn_small / menu_amount
       end
 
@@ -31,8 +32,6 @@ class Graph < ApplicationRecord
   end
 
   def self.destroy_graph(graphs)
-    graphs.each do |graph|
-      graph.destroy
-    end
+    graphs.each(&:destroy)
   end
 end

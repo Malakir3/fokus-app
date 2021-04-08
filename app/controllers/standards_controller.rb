@@ -39,10 +39,10 @@ class StandardsController < ApplicationController
   end
 
   def update
-    unless @standard.update(standard_params)
-      @menu = @standard.menu
-      render :edit
-    end
+    return if @standard.update(standard_params)
+
+    @menu = @standard.menu
+    render :edit
   end
 
   def destroy

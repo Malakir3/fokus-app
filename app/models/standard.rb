@@ -45,16 +45,16 @@ class Standard < ApplicationRecord
 
   def self.amount_cal(menu)
     amount_ary = []
-    value_1 = menu.amount / 3
-    value_2 = menu.amount / 2
-    value_3 = menu.amount
-    value_4 = menu.amount * 2
-    value_5 = menu.amount * 3
+    value1 = menu.amount / 3
+    value2 = menu.amount / 2
+    value3 = menu.amount
+    value4 = menu.amount * 2
+    value5 = menu.amount * 3
 
-    amount_ary << value_1
-    amount_ary << value_2
-    amount_ary << value_3
-    amount_ary << value_4
-    amount_ary << value_5
+    amount_ary << value1
+    amount_ary << value2
+    amount_ary << value3
+    amount_ary << value4
+    amount_ary << value5
   end
 end

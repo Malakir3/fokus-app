@@ -15,10 +15,10 @@ class IntakesController < ApplicationController
 
   def create
     @intake = Intake.new(intake_params)
-    unless @intake.save
-      @menu = Menu.find(params[:menu_id])
-      render :new
-    end
+    return if @intake.save
+
+    @menu = Menu.find(params[:menu_id])
+    render :new
   end
 
   def show
@@ -30,10 +30,10 @@ class IntakesController < ApplicationController
   end
 
   def update
-    unless @intake.update(intake_params)
-      @menu = @intake.menu
-      render :edit
-    end
+    return if @intake.update(intake_params)
+
+    @menu = @intake.menu
+    render :edit
   end
 
   def destroy
