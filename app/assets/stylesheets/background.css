@@ -15,10 +15,20 @@
   text-decoration: none;
 }
 
+.text-green {
+  color: greenyellow;
+}
+
 .link-text {
   font-size: 1em;
   font-weight: 700;
   color: #fff;
+}
+
+.link-text-color {
+  font-size: 1em;
+  font-weight: 700;
+  color: #FF9966;
 }
 
 footer {
