@@ -5,6 +5,7 @@ ja:
        nickname: ニックネーム
        firstname: 名前
        lastname: 苗字
+       birthday: 生年月日
      menu:
        title: メニュー名
        amount: 分量
@@ -17,5 +18,9 @@ ja:
        medium: 普通
        small: 小盛り
      intake:
+       date: 日付
        timing_id: タイミング
        value_id: 量
+     graph:
+       date: 日付
+       calorie: カロリー

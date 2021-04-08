@@ -1,17 +1,19 @@
-<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-gd-black">
   <div class="position-sticky pt-3">
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+    <span>カロリー吸収系</span>
+    </h6>
     <ul class="nav flex-column">
       <li class="nav-item">
-        <%# aria-currentは適用できるのか不明 %>
-        <%= link_to 'メニューリスト', menus_path, class: "nav-link active", 'aria-current': "page" %>
+        <%= link_to '食事メニュー', menus_path, class: "nav-link btn btn-success btn-lg my-1", 'aria-current': "page" %>
           <span data-feather="home"></span>
       </li>
       <li class="nav-item">
-        <%= link_to "基準リスト", standards_path, class: "nav-link" %>
+        <%= link_to "食事基準", standards_path, class: "nav-link btn btn-warning btn-lg my-1" %>
           <span data-feather="file"></span>
       </li>
       <li class="nav-item">
-        <%= link_to "食事履歴",intakes_path, class: "nav-link" %>
+        <%= link_to "食事履歴", intakes_path, class: "nav-link btn btn-info btn-lg my-1" %>
           <span data-feather="shopping-cart"></span>
       </li>
     </ul>
@@ -24,19 +26,19 @@
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link btn btn-outline-success btn-lg my-1" href="#">
           <span data-feather="file-text"></span>
           運動メニュー
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link nav-link btn btn-outline-warning btn-lg my-1" href="#">
           <span data-feather="file-text"></span>
           運動基準
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link nav-link btn btn-outline-info btn-lg my-1" href="#">
           <span data-feather="file-text"></span>
           運動履歴
         </a>

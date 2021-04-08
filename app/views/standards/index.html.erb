@@ -10,14 +10,13 @@
 
         <h2>メニュー表</h2>
         <div class="table-responsive">
-          <table class="table table-striped table-sm">
+          <table class="table table-sm">
             <thead>
               <tr>
                 <th>メニュー名</th>
                 <th>大盛り</th>
                 <th>普通</th>
                 <th>小盛り</th>
-                <th>その他</th>
               </tr>
             </thead>
             <tbody>
@@ -25,7 +24,7 @@
               <% @cal_results.each do |result| %>
                 <tr>
                   <td>
-                    <%= link_to result[:title], menu_standard_path(result[:menu_id], result[:id]) %>
+                    <%= link_to result[:title], menu_standard_path(result[:menu_id], result[:id]), class:"link-text td-none" %>
                   </td>
                   <td>
                     <%= "#{result[:large_amount]}(#{result[:unit]})"%>
@@ -39,7 +38,6 @@
                     <%= "#{result[:small_amount]}(#{result[:unit]})"%>
                     <%= result[:small_cal] %>kcal
                   </td>
-                  <td>other</td>
                 </tr>
               <% end %>
             <% end %>
