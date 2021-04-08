@@ -96,7 +96,7 @@
               <td>
                 <% if @standards.where(menu_id: intake.menu_id) == [] %>
                   <%= "*#{intake.menu.title}の基準は登録されていません(計算対象外です)。"%><br>
-                  <%= link_to "#{intake.menu.title}の基準を登録する",new_menu_standard_path(intake.menu_id)%> <br>
+                  <%= link_to "#{intake.menu.title}の基準を登録する",new_menu_standard_path(intake.menu_id), class:"td-none"%> <br>
                 <% end %>
               </td>
             </tr>
