@@ -22,43 +22,30 @@ class Menu < ApplicationRecord
     menu_ary = []
     menu_hash = {}
 
-    value_1 = menu.amount / 3
-    value_2 = menu.amount / 2
-    value_3 = menu.amount
-    value_4 = menu.amount * 2
-    value_5 = menu.amount * 3
-
-    calorie_1 = menu.calorie / 3
-    calorie_2 = menu.calorie / 2
-    calorie_3 = menu.calorie
-    calorie_4 = menu.calorie * 2
-    calorie_5 = menu.calorie * 3
-
-    menu_hash[:value] = value_1
-    menu_hash[:calorie] = calorie_1
+    menu_hash[:value] = menu.amount / 3
+    menu_hash[:calorie] = menu.calorie / 3
     menu_ary << menu_hash
     menu_hash = {}
 
-    menu_hash[:value] = value_2
-    menu_hash[:calorie] = calorie_2
+    menu_hash[:value] = menu.amount / 2
+    menu_hash[:calorie] = menu.calorie / 2
     menu_ary << menu_hash
     menu_hash = {}
 
-    menu_hash[:value] = value_3
-    menu_hash[:calorie] = calorie_3
+    menu_hash[:value] = menu.amount
+    menu_hash[:calorie] = menu.calorie
     menu_ary << menu_hash
     menu_hash = {}
 
-    menu_hash[:value] = value_4
-    menu_hash[:calorie] = calorie_4
+    menu_hash[:value] = menu.amount * 2
+    menu_hash[:calorie] = menu.calorie * 2
     menu_ary << menu_hash
     menu_hash = {}
 
-    menu_hash[:value] = value_5
-    menu_hash[:calorie] = calorie_5
+    menu_hash[:value] = menu.amount * 3
+    menu_hash[:calorie] = menu.calorie * 3
     menu_ary << menu_hash
-    menu_hash = {}
 
-    return menu_ary
+    menu_ary
   end
 end

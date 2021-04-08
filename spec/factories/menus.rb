@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :menu do
     title     { Faker::Food.fruits }
     amount    { Faker::Number.number(digits: 3) }
-    unit      { Faker::Measurement.weight(amount: "none") }
+    unit      { Faker::Measurement.weight(amount: 'none') }
     calorie   { Faker::Number.number(digits: 3) }
     bar_code  { Faker::Number.leading_zero_number(digits: 9) }
 

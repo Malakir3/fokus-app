@@ -3,10 +3,9 @@ class IntakesController < ApplicationController
   before_action :move_to_index, only: [:show, :edit, :update, :destroy]
 
   def index
-    @intakes = Intake.includes(:menu).where(user_id: current_user.id)
+    @intakes = Intake.includes(:menu).where(user_id: current_user.id).order('date DESC').order('timing_id DESC')
     set_standards
     Graph.destroy_graph(Graph.all)
-    Graph.create_graph(@intakes, @standards)
   end
 
   def new
@@ -16,10 +15,10 @@ class IntakesController < ApplicationController
 
   def create
     @intake = Intake.new(intake_params)
-    unless @intake.save
-      @menu = Menu.find(params[:menu_id])
-      render :new
-    end
+    return if @intake.save
+
+    @menu = Menu.find(params[:menu_id])
+    render :new
   end
 
   def show
@@ -31,10 +30,10 @@ class IntakesController < ApplicationController
   end
 
   def update
-    unless @intake.update(intake_params)
-      @menu = @intake.menu
-      render :edit 
-    end
+    return if @intake.update(intake_params)
+
+    @menu = @intake.menu
+    render :edit
   end
 
   def destroy

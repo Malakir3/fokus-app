@@ -10,8 +10,12 @@
     <%# メイン画面の内容部分 %>
       <%# グラフ表示 %>
       <div>
-      <%= column_chart Graph.group(:date).sum(:calorie),
-      colors: ["coral"], xtitle: "日付", ytitle: "kcal", stacked: true %>
+      <%= column_chart Graph.group(:date).sum(:calorie), colors: ["coral"], xtitle: "日付", ytitle: "kcal", stacked: true, suffix: " kcal", thousands: ",", empty: "グラフ作成ボタンを押してください" %>
+        <% if Graph.all == [] %>
+        <div class="d-flex justify-content-center col my-4">
+          <%= link_to 'グラフ作成', graphs_path, method: :post, class: "btn btn-sm btn-primary btn-lg fs-3 w-50" %>
+        </div>
+        <% end %>
       </div>
       <%# //グラフ表示 %>        
       <h2>食事履歴一覧</h2>

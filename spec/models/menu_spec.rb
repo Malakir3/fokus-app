@@ -36,7 +36,7 @@ RSpec.describe Menu, type: :model do
       it 'titleが空では登録できない' do
         @menu.title = ''
         @menu.valid?
-        expect(@menu.errors.full_messages).to include('メニュー名を入力してください')        
+        expect(@menu.errors.full_messages).to include('メニュー名を入力してください')
       end
 
       it 'amountが空では登録できない' do

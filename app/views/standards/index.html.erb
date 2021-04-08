@@ -24,7 +24,7 @@
               <% @cal_results.each do |result| %>
                 <tr>
                   <td>
-                    <%= link_to result[:title], menu_standard_path(result[:menu_id], result[:id]), class:"link-text td-none" %>
+                    <%= link_to result[:title], menu_standard_path(result[:menu_id], result[:id]), class:"link-text-color td-none" %>
                   </td>
                   <td>
                     <%= "#{result[:large_amount]}(#{result[:unit]})"%>

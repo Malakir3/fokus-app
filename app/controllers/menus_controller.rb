@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   def index
-    @menus = Menu.all
+    @menus = Menu.all.order('created_at DESC')
   end
 
   def new
@@ -27,9 +27,7 @@ class MenusController < ApplicationController
 
   def update
     @menu = Menu.find(params[:id])
-    unless @menu.update(menu_params)
-      render :edit
-    end
+    render :edit unless @menu.update(menu_params)
   end
 
   def destroy
@@ -40,6 +38,6 @@ class MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:title, :amount, :unit, :calorie, :bar_code ,images: [])
+    params.require(:menu).permit(:title, :amount, :unit, :calorie, :bar_code, images: [])
   end
 end

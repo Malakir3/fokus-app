@@ -1,3 +1,8 @@
+/* html {
+  position: relative;
+  min-height: 100vh;
+} */
+
 .bg-gd-black {
   background-image: linear-gradient(to left, #434343 0%, black 100%);
 }
@@ -10,15 +15,24 @@
   text-decoration: none;
 }
 
+.text-green {
+  color: greenyellow;
+}
+
 .link-text {
-  /* display: inline-block; */
-  /* padding: 0.35em 0.65em; */
   font-size: 1em;
   font-weight: 700;
-  /* line-height: 1; */
   color: #fff;
-  /* text-align: center; */
-  /* white-space: nowrap; */
-  /* vertical-align: baseline; */
-  /* border-radius: 0.25rem; */
+}
+
+.link-text-color {
+  font-size: 1em;
+  font-weight: 700;
+  color: #FF9966;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

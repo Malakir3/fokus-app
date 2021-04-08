@@ -3,7 +3,7 @@ class StandardsController < ApplicationController
   before_action :move_to_index, only: [:show, :edit, :update, :destroy]
 
   def index
-    @standards = Standard.includes(:menu).where(user_id: current_user.id)
+    @standards = Standard.includes(:menu).where(user_id: current_user.id).order('created_at DESC')
     @menus = Menu.all
     @cal_results = Standard.calorie_cal(@standards) unless @standards == []
   end
@@ -15,7 +15,7 @@ class StandardsController < ApplicationController
   end
 
   def create
-    if params[:standard] == nil
+    if params[:standard].nil?
       redirect_to new_menu_standard_path
     else
       @standard = Standard.new(standard_params)
@@ -39,10 +39,10 @@ class StandardsController < ApplicationController
   end
 
   def update
-    unless @standard.update(standard_params)
-      @menu = @standard.menu
-      render :edit 
-    end
+    return if @standard.update(standard_params)
+
+    @menu = @standard.menu
+    render :edit
   end
 
   def destroy

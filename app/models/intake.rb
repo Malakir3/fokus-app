@@ -3,7 +3,7 @@ class Intake < ApplicationRecord
   belongs_to :menu
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  
+
   belongs_to :value
   belongs_to :timing
 
