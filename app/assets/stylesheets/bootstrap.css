@@ -45,7 +45,10 @@
 }
 
 body {
+  position: relative;
+  min-height: 100vh;
   margin: 0;
+  padding-bottom: 3rem;
   font-family: var(--bs-font-sans-serif);
   font-size: 1rem;
   font-weight: 400;
