@@ -3,7 +3,7 @@ class IntakesController < ApplicationController
   before_action :move_to_index, only: [:show, :edit, :update, :destroy]
 
   def index
-    @intakes = Intake.includes(:menu).where(user_id: current_user.id).order("date DESC").order("timing_id DESC")
+    @intakes = Intake.includes(:menu).where(user_id: current_user.id).order('date DESC').order('timing_id DESC')
     set_standards
     Graph.destroy_graph(Graph.all)
   end
@@ -32,7 +32,7 @@ class IntakesController < ApplicationController
   def update
     unless @intake.update(intake_params)
       @menu = @intake.menu
-      render :edit 
+      render :edit
     end
   end
 

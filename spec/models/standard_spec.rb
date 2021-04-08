@@ -20,12 +20,11 @@ RSpec.describe Standard, type: :model do
         @standard.medium = 1
         expect(@standard).to be_valid
       end
-      
+
       it 'smallが0より大きい数字ならば登録できる' do
         @standard.small = 1
         expect(@standard).to be_valid
       end
-      
     end
 
     context '基準登録できないとき' do
@@ -34,7 +33,7 @@ RSpec.describe Standard, type: :model do
         @standard.valid?
         expect(@standard.errors.full_messages).to include('大盛りを選択してください')
       end
-      
+
       it 'mediumが空では登録できない' do
         @standard.medium = ''
         @standard.valid?

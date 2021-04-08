@@ -59,6 +59,6 @@ class Menu < ApplicationRecord
     menu_ary << menu_hash
     menu_hash = {}
 
-    return menu_ary
+    menu_ary
   end
 end

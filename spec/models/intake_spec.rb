@@ -52,7 +52,7 @@ RSpec.describe Intake, type: :model do
         @intake.valid?
         expect(@intake.errors.full_messages).to include('量を選択してください')
       end
-      
+
       it 'userに紐づいていなければ登録できない' do
         @intake.user = nil
         @intake.valid?
