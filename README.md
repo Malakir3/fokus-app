@@ -55,7 +55,7 @@ Fokusは、食事の量を感覚的に入力することにより、正確なカ
 そこで、Fokusのユーザーは予め一つのメニューについて、それぞれ分量の異なる5種類の写真の中から、自身にとって「大盛り」、「普通」、「小盛り」だと感じる写真を選び、メニュー毎に登録します。各写真は分量の情報を有しているため、ユーザーは写真を選択することによって、間接的に分量を選択することができます。これにより、ユーザーの感覚に合わせて食事量を登録することができるため、より正確なカロリー計算を実現できています。
 
 # 洗い出した要件
-[要件定義(googleスプレッドシート)](https://docs.google.com/spreadsheets/d/1bMDBi0g0Huv0Bst3jDJaNEXOxliUnR9ywHb9BMfOR4o/edit#gid=1059704997)
+[要件定義(googleスプレッドシート)](https://docs.google.com/spreadsheets/d/1ZNXatKxcsyWj7Xd3kYDzX89nxGfBKaGZwT-P7MMiqpc/edit#gid=1059704997)
 
 # DEMO
 1. ログイン後、画面左部のメニューバーから行いたい操作を選択します。  
