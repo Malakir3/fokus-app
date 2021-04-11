@@ -23,7 +23,9 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_nickname', with: @user.nickname
       fill_in 'user_lastname', with: @user.lastname
       fill_in 'user_firstname', with: @user.firstname
-      # fill_in 'user_birthday', with: @user.birthday
+      select '2020', from: 'user_birthday_1i'
+      select '1月', from: 'user_birthday_2i'
+      select '30', from: 'user_birthday_3i'
       fill_in 'user_email', with: @user.email
       fill_in 'user_password', with: @user.password
       fill_in 'user_password_confirmation', with: @user.password_confirmation
