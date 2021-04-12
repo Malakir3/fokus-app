@@ -13,9 +13,9 @@ RSpec.describe "基準登録", type: :system do
       # 登録済みのメニュー画像をクリックするとメニュー詳細画面に遷移する
       find('img').click
       expect(current_path).to eq menu_path(@menu)
-      # 実績登録ボタンがあることを確認する
+      # 基準登録ボタンがあることを確認する
       expect(page).to have_content('基準登録(推奨)')
-      # 実績登録ボタンを押すと実績登録画面に遷移する
+      # 基準登録ボタンを押すと実績登録画面に遷移する
       find_link('基準登録(推奨)', href: new_menu_standard_path(@menu)).click
       expect(current_path).to eq new_menu_standard_path(@menu)
       # フォームに情報を入力する
