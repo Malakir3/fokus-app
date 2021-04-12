@@ -7,7 +7,9 @@ FactoryBot.define do
     bar_code  { Faker::Number.leading_zero_number(digits: 9) }
 
     after(:build) do |menu|
-      menu.images.attach(io: File.open('public/images/test_image.jpg'), filename: 'test_image.jpg')
+      5.times do
+        menu.images.attach(io: File.open('public/images/test_image.jpg'), filename: 'test_image.jpg')
+      end
     end
   end
 end
