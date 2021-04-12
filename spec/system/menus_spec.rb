@@ -166,3 +166,36 @@ RSpec.describe "メニュー編集", type: :system do
     end
   end
 end
+
+RSpec.describe "メニュー削除", type: :system do
+  before do
+    @user = FactoryBot.create(:user)
+    @menu = FactoryBot.create(:menu)
+  end
+
+  context 'メニューを削除できるとき' do
+    it '削除後も必要な情報が入力されていれば再登録できる' do
+      # トップページに移動してサインインする
+      sign_in(@user)
+      # 登録済みのメニュー画像をクリックするとメニュー詳細画面に遷移する
+      find('img').click
+      expect(current_path).to eq menu_path(@menu)
+      # 削除ボタンがあることを確認する
+      expect(page).to have_content('削除')
+      # 削除ボタンを押すと、Menuモデルのカウントが1下がることを確認する
+      expect{
+        find_link('削除', href: menu_path(@menu)).click
+      }.to change{ Menu.count }.by(-1)
+      # 削除完了ページに遷移することを確認する
+      expect(current_path).to eq menu_path(@menu)
+      # 「メニューが削除されました」の文字があることを確認する
+      expect(page).to have_content('メニューが削除されました')
+      # トップページに移動する
+      visit root_path
+      # トップページには登録済みのメニューが存在しないことを確認する（画像）
+      expect(page).to have_no_selector('img')
+      # トップページには登録済みのメニューが存在しないことを確認する（メニュー名）
+      expect(page).to have_no_content(@menu.title)
+    end
+  end
+end
