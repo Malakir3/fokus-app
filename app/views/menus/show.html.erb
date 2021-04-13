@@ -17,7 +17,7 @@
             <% i = 4 %>
             <% 5.times do %>
               <div class="col d-flex justify-content-around">
-                <%= @menu_list[i][:value] %> <%= @menu.unit %>(<%= @menu_list[i][:calorie] %> kcal)
+                <%= @menu_list[i][:calorie] %> kcal (<%= @menu_list[i][:value] %> <%= @menu.unit %>)
               </div>
               <% i -= 1 %>
             <% end %>

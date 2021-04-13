@@ -17,8 +17,10 @@
                       <%= link_to menu.title, menu_path(menu.id), class: "d-flex justify-content-center link-text td-none" %>
                       <div class="d-flex justify-content-around align-items-center">
                         <div class="btn-group">
-                          <%= link_to '詳細', menu_path(menu.id), class: "btn btn-sm btn-outline-light" %>
-                          <%= link_to '編集', edit_menu_path(menu.id), class: "btn btn-sm btn-outline-light" %>
+                          <%= link_to '実績登録', new_menu_intake_path(menu.id), class: "btn btn-sm btn-outline-info" %>
+                          <% if Standard.where(user_id: current_user.id, menu_id: menu.id) == []%>
+                            <%= link_to '基準登録', new_menu_standard_path(menu.id), class: "btn btn-sm btn-outline-warning" %>
+                          <% end %>
                         </div>
                         <small>
                           <%= menu.calorie %> kcal
