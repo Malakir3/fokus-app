@@ -74,11 +74,7 @@ end
 
 RSpec.describe "基準編集", type: :system do
   before do
-    @standard = FactoryBot.build(:standard)
-    @standard.large = @standard.menu.amount * 3
-    @standard.medium = @standard.menu.amount
-    @standard.small = @standard.menu.amount / 3
-    @standard.save
+    @standard = FactoryBot.create(:standard)
   end
   
   context '基準を編集して再登録できるとき' do
@@ -135,11 +131,7 @@ end
 
 RSpec.describe "基準削除", type: :system do
   before do
-    @standard = FactoryBot.build(:standard)
-    @standard.large = @standard.menu.amount * 3
-    @standard.medium = @standard.menu.amount
-    @standard.small = @standard.menu.amount / 3
-    @standard.save
+    @standard = FactoryBot.create(:standard)
   end
 
   context '基準を削除できるとき' do
