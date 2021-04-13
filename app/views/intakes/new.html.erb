@@ -1,16 +1,13 @@
 <%= render "shared/header"%>
-
 <div class="container-fluid">
   <div class="row">
-
     <%= render "shared/nav-bar"%>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-    <%= render "shared/intakes_header" %>
-    <%# メイン画面の内容部分 %>
+      <%= render "shared/intakes_header" %>
+      <%# メイン画面の内容部分 %>
       <h2>食事実績登録</h2>
       <%= form_with model: [@menu, @intake], local: true, class:"row my-3" do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
+        <%= render 'layouts/error_messages', model: f.object %>
         <div class="row my-3 fs-5">
           <div class="col-12">
             <%= f.label :date %>

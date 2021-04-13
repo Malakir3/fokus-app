@@ -1,38 +1,35 @@
 <%= render "shared/header"%>
-
 <div class="container-fluid">
   <div class="row">
-
-  <%= render "shared/nav-bar"%>
-
+    <%= render "shared/nav-bar"%>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
       <%= render "shared/menus_header" %>
-
       <%# メイン画面の内容部分 %>
       <div class="container-fluid">
-
-        <p class="fs-3 mx-auto p-3" style="width: 200px;">
-        <%= @menu.title %>
-        </p>
+        <p class="fs-3 mx-auto p-3" style="width: 200px;"><%= @menu.title %></p>
         <div class="menu-list">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
-          <% @menu.images.each do |image|%>
-            <%= image_tag image.variant(resize_to_fill:[150, 150]), class:'images' %>
-          <% end %>
+            <% @menu.images.each do |image|%>
+              <%= image_tag image.variant(resize_to_fill:[150, 150]), class:'images' %>
+            <% end %>
           </div>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 gx-3 my-3">
             <% i = 4 %>
             <% 5.times do %>
-            <%# <div class="row col justify-content-around"> %>
               <div class="col d-flex justify-content-around">
-              <%= @menu_list[i][:value] %> <%= @menu.unit %>
-              (<%= @menu_list[i][:calorie] %> kcal)
+                <%= @menu_list[i][:value] %> <%= @menu.unit %>(<%= @menu_list[i][:calorie] %> kcal)
               </div>
-            <%# </div> %>
-            <% i -= 1 %>
+              <% i -= 1 %>
             <% end %>
           </div>
+        </div>
+        <div>
+          <%# 基準がまだ登録されていない場合に表示 %>
+          <% if Standard.where(user_id: current_user.id, menu_id: @menu.id) == []%>
+          <%= link_to '基準登録(推奨)', new_menu_standard_path(@menu.id), class: "btn btn-lg btn-warning fs-3" %>
+          <% end %>
+          <%# /基準がまだ登録されていない場合に表示 %>
+          <%= link_to '実績登録', new_menu_intake_path(@menu.id), class: "btn btn-lg btn-info fs-3 " %>
         </div>
         <div class="row row-cols-1 row-cols-sm-2 g-0">
           <div class="col justify-content-between align-items-center">
@@ -40,22 +37,10 @@
               <%= link_to '削除', menu_path(@menu.id), method: :delete, class: "btn btn-sm btn-outline-light" %>
               <%= link_to '編集', edit_menu_path(@menu.id), class: "btn btn-sm btn-outline-light" %>
             </div>
-            <div class="btn-group">
-              <%= link_to '実績登録', new_menu_intake_path(@menu.id), class: "btn btn-sm btn-outline-light" %>
-            </div>
-            <%# 基準がまだ登録されていない場合に表示 %>
-            <% if Standard.where(user_id: current_user.id, menu_id: @menu.id) == []%>
-            <h3><%= link_to 'Fokus! 基準を登録する', new_menu_standard_path(@menu.id) %></h3>
-            <% end %>
-            <%# /基準がまだ登録されていない場合に表示 %>
           </div>
         </div>
       </div>
     </main>
   </div>
 </div>
-
 <%= render "shared/footer"%>
-
-
-

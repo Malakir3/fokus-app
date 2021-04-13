@@ -1,7 +1,8 @@
-<main class="form-signin">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%# <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> %>
-    <h1 class="h3 mb-3 fw-normal">サインイン</h1>
+<body class="text-center body-sign">
+  <main class="text-center form-sign">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <i class="bi bi-globe2" style="font-size: 3rem; color: cornflowerblue;">Fokus</i>
+      <h1 class="h3 mb-3 fw-normal">ログイン</h1>
       <div class="login-flash-message">
         <%= flash[:notice] %>
         <%= flash[:alert] %>
@@ -14,19 +15,21 @@
         <%= f.label :inputPassword, class:"visually-hidden" %><br />
         <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "inputPassword", placeholder: "パスワード" %>
       </div>
-
       <% if devise_mapping.rememberable? %>
-        <div class="checkbox mb-3">
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </div>
+      <div class="checkbox mb-3">
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
         </div>
+      </div>
       <% end %>
-        <div class="actions">
-          <%= f.submit "Log in", class:"w-100 btn btn-lg btn-primary" %>
-        </div>
-  <% end %>
-</main>
-
-<%= render "devise/shared/links" %>
+      <div class="actions">
+        <%= f.submit "ログイン", class:"w-100 btn btn-lg btn-primary" %>
+      </div>
+      <div class="mt-5">初めての方はこちら</div>
+      <div class="my-3">
+        <%= link_to "新規登録", new_user_registration_path, class:"w-100 btn btn-lg btn-secondary" %>
+      </div>
+    <% end %>
+  </main>
+</body>
