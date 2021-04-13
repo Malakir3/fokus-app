@@ -10,7 +10,7 @@ Fokusはカロリー計算アプリです。毎日の食事メニューを記録
 
 # テスト用情報
 ## Basic認証
-- ID: kimura
+- ID: test
 - Password: 34807
 ## ユーザー情報
 - Email: test1@com
