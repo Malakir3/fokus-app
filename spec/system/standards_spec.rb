@@ -83,9 +83,6 @@ RSpec.describe "基準編集", type: :system do
       sign_in(@standard.user)
       # 基準ページに移動する
       visit standards_path
-      # 登録済みのメニュー名をクリックすると基準詳細画面に遷移する
-      find_link("#{@standard.menu.title}", href: menu_standard_path(@standard.menu, @standard)).click
-      expect(current_path).to eq menu_standard_path(@standard.menu, @standard)
       # 登録済みの基準について編集ページへのリンクがあることを確認する
       expect(page).to have_content('編集')
       # 上記リンクをクリックすると基準編集ページに遷移する
@@ -140,9 +137,6 @@ RSpec.describe "基準削除", type: :system do
       sign_in(@standard.user)
       # 基準ページに移動する
       visit standards_path
-      # 登録済みのメニュー名をクリックすると基準詳細画面に遷移する
-      find_link("#{@standard.menu.title}", href: menu_standard_path(@standard.menu, @standard)).click
-      expect(current_path).to eq menu_standard_path(@standard.menu, @standard)
       # 削除ボタンがあることを確認する
       expect(page).to have_content('削除')
       # 削除ボタンを押すと、Standardモデルのカウントが1下がることを確認する

@@ -1,13 +1,10 @@
 <%= render "shared/header"%>
-
 <div class="container-fluid">
   <div class="row">
-
     <%= render "shared/nav-bar"%>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-    <%= render "shared/intakes_header" %>
-    <%# メイン画面の内容部分 %>
+      <%= render "shared/intakes_header" %>
+      <%# メイン画面の内容部分 %>
       <h2>更新完了</h2>
       <div>
       <%= @intake.menu.title %>の食事実績が更新されました。

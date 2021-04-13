@@ -1,18 +1,15 @@
 <%= render "shared/header"%>
-
   <div class="container-fluid">
     <div class="row">
-
       <%= render "shared/nav-bar"%>
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-      <%= render "shared/standards_header" %>
-
+        <%= render "shared/standards_header" %>
         <h2>メニュー表</h2>
         <div class="table-responsive">
           <table class="table table-sm">
             <thead>
               <tr>
+                <th>操作ボタン</th>
                 <th>メニュー名</th>
                 <th>大盛り</th>
                 <th>普通</th>
@@ -23,6 +20,12 @@
             <% unless @standards == []%>
               <% @cal_results.each do |result| %>
                 <tr>
+                  <td>
+                    <div class="btn-group">
+                    <%= link_to '削除', menu_standard_path(result[:menu_id], result[:id]), method: :delete, class: "btn btn-sm btn-outline-light" %>
+                    <%= link_to '編集', edit_menu_standard_path(result[:menu_id], result[:id]), class: "btn btn-sm btn-outline-light" %>
+                  </div>
+                  </td>
                   <td>
                     <%= link_to result[:title], menu_standard_path(result[:menu_id], result[:id]), class:"link-text-color td-none" %>
                   </td>
@@ -44,7 +47,7 @@
             </tbody>
           </table>
         </div>
-      </div>
+      </main>
     </div>
   </div>
 <%= render "shared/footer"%>

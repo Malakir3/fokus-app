@@ -1,36 +1,25 @@
 <%= render "shared/header"%>
-
 <div class="container-fluid">
   <div class="row">
-
-  <%= render "shared/nav-bar"%>
-
+    <%= render "shared/nav-bar"%>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
       <%= render "shared/menus_header" %>
-
       <%# メイン画面の内容部分 %>
       <div class="container-fluid">
-
-        <p class="fs-3 mx-auto p-3" style="width: 200px;">
-        <%= @menu.title %>
-        </p>
+        <p class="fs-3 mx-auto p-3" style="width: 200px;"><%= @menu.title %></p>
         <div class="menu-list">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
-          <% @menu.images.each do |image|%>
-            <%= image_tag image.variant(resize_to_fill:[150, 150]), class:'images' %>
-          <% end %>
+            <% @menu.images.each do |image|%>
+              <%= image_tag image.variant(resize_to_fill:[150, 150]), class:'images' %>
+            <% end %>
           </div>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 gx-3 my-3">
             <% i = 4 %>
             <% 5.times do %>
-            <%# <div class="row col justify-content-around"> %>
               <div class="col d-flex justify-content-around">
-              <%= @menu_list[i][:value] %> <%= @menu.unit %>
-              (<%= @menu_list[i][:calorie] %> kcal)
+                <%= @menu_list[i][:value] %> <%= @menu.unit %>(<%= @menu_list[i][:calorie] %> kcal)
               </div>
-            <%# </div> %>
-            <% i -= 1 %>
+              <% i -= 1 %>
             <% end %>
           </div>
         </div>
@@ -54,8 +43,4 @@
     </main>
   </div>
 </div>
-
 <%= render "shared/footer"%>
-
-
-

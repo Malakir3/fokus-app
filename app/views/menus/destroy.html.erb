@@ -1,19 +1,16 @@
 <%= render "shared/header"%>
-
 <div class="container-fluid">
   <div class="row">
-
-  <%= render "shared/nav-bar"%>
-
+    <%= render "shared/nav-bar"%>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
       <%= render "shared/menus_header" %>
-
       <%# メイン画面の内容部分 %>
       <div>
       メニューが削除されました。
       <div>
       <%= link_to 'メニュートップへ戻る', menus_path %>
       <%# //メイン画面の内容部分 %>
+    </main>
   </div>
 </div>
+<%= render "shared/footer"%>
