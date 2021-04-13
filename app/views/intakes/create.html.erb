@@ -5,11 +5,28 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <%= render "shared/intakes_header" %>
       <%# メイン画面の内容部分 %>
-      <h2>登録完了</h2>
-      <div>
-      <%= @intake.menu.title %>の食事実績が登録されました。
-      <div>
-      <%= link_to 'メニューリスト', menus_path %>
+      <div><%= @intake.menu.title %>の食事実績が登録されました。</div>
+      <div class="my-3">画像をクリックして他のメニューも登録しましょう！</div>
+      <div class="container">
+        <div class="row row-cols-3 row-cols-sm-4 row-cols-md-5 g-3">
+          <% @menus.each do |menu| %>
+          <div class="col">
+            <div class="card shadow-sm">
+              <%= link_to image_tag(menu.images[2].variant(resize_to_fill:[100, 100])), new_menu_intake_path(menu.id), class: "d-flex justify-content-center" %>
+              <div class="card-title">
+                <%= link_to menu.title, new_menu_intake_path(menu.id), class: "d-flex justify-content-center link-text td-none" %>
+                <div class="d-flex justify-content-around align-items-center">
+                  <small>
+                    <%= menu.calorie %> kcal (<%= menu.amount %> <%= menu.unit %>)
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div><%= link_to '食事メニューへ', menus_path, class: "btn btn-success" %></div>
     </main>
   </div>
 </div>

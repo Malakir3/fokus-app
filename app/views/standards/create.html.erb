@@ -5,11 +5,11 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <%= render "shared/standards_header" %>
       <%# メイン画面の内容部分 %>
-      <div>
-      <%= @standard.menu.title %>の基準が新規登録されました。<br>
-      <%= link_to '食事実績一覧', intakes_path %><br>
-      <%= link_to 'メニュートップ', menus_path %>
-      <div>
+      <div><%= @standard.menu.title %>の基準が新規登録されました。</div>
+      <div class="col-sm-auto col-md-3 my-3">
+        <div><%= link_to '食事メニュー', menus_path, class: "btn btn-success my-3" %></div>
+        <div><%= link_to '食事基準', standards_path, class: "btn btn-warning my-3" %></div>
+        <div><%= link_to "#{@standard.menu.title}の食事実績を登録する", new_menu_intake_path(@standard.menu), class: "btn btn-info my-3" %></div>
       <%# //メイン画面の内容部分 %>
     </main>
   </div>

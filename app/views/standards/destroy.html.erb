@@ -5,10 +5,8 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <%= render "shared/standards_header" %>
       <%# メイン画面の内容部分 %>
-      <div>
-      <%= @standard.menu.title %>の基準が削除されました。<br>
-      <%= link_to '基準一覧へ戻る', standards_path %>
-      <div>
+      <div><%= @standard.menu.title %>の基準が削除されました。</div>
+      <div><%= link_to '食事基準へ戻る', standards_path, class: "btn btn-warning my-3" %></div>
       <%# //メイン画面の内容部分 %>
     </main>
   </div>
