@@ -14,9 +14,9 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'user_nickname', with: @user.nickname
       fill_in 'user_lastname', with: @user.lastname
       fill_in 'user_firstname', with: @user.firstname
+      fill_in 'user_nickname', with: @user.nickname
       select '2020', from: 'user_birthday_1i'
       select '1月', from: 'user_birthday_2i'
       select '30', from: 'user_birthday_3i'
@@ -44,9 +44,9 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
-      fill_in 'user_nickname', with: ''
       fill_in 'user_lastname', with: ''
       fill_in 'user_firstname', with: ''
+      fill_in 'user_nickname', with: ''
       fill_in 'user_email', with: ''
       fill_in 'user_password', with: ''
       fill_in 'user_password_confirmation', with: ''
