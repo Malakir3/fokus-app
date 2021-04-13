@@ -117,7 +117,7 @@ RSpec.describe "基準編集", type: :system do
   
   context '基準を編集して再登録できないとき' do
     it '基準を登録したユーザー以外はその基準を編集できない' do
-      # 基準登録したユーザーとは別のユーザーを生成
+      # 基準登録したユーザーとは別のユーザーを生成する
       another_user = FactoryBot.create(:user)
       # トップページに移動してanother_userでサインインする
       sign_in(another_user)
