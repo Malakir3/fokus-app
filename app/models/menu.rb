@@ -60,8 +60,6 @@ class Menu < ApplicationRecord
   private
 
   def images_five?
-    if images.length != 5
-      errors.add(:images, "は5枚添付してください")
-    end
+    errors.add(:images, 'は5枚添付してください') if images.length != 5
   end
 end

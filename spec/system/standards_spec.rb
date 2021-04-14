@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "基準登録", type: :system do
+RSpec.describe '基準登録', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @menu = FactoryBot.create(:menu)
@@ -23,9 +23,9 @@ RSpec.describe "基準登録", type: :system do
       choose("standard_medium_#{@menu.amount}")
       choose("standard_small_#{@menu.amount / 3}")
       # 登録するボタンを押すと、Standardモデルのカウントが1上がることを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change{ Standard.count }.by(1)
+      end.to change { Standard.count }.by(1)
       # 登録完了ページに遷移することを確認する
       expect(current_path).to eq menu_standards_path(@menu)
       # 「"登録したメニュー名"の基準が新規登録されました」の文字があることを確認する
@@ -33,10 +33,10 @@ RSpec.describe "基準登録", type: :system do
       # 基準ページに移動する
       visit standards_path
       # 基準ページには基準登録したメニュー名、多め/普通/少なめの分量が存在することを確認する
-      expect(page).to have_content("#{@menu.title}")
-      expect(page).to have_content("#{@menu.amount * 3}")
-      expect(page).to have_content("#{@menu.amount}")
-      expect(page).to have_content("#{@menu.amount / 3}")
+      expect(page).to have_content(@menu.title.to_s)
+      expect(page).to have_content((@menu.amount * 3).to_s)
+      expect(page).to have_content(@menu.amount.to_s)
+      expect(page).to have_content((@menu.amount / 3).to_s)
     end
   end
 
@@ -55,9 +55,9 @@ RSpec.describe "基準登録", type: :system do
       # フォームの一部にのみ情報を入力する
       choose("standard_medium_#{@menu.amount}")
       # せずに登録するボタンを押すと、Standardモデルのカウントが変化しないことを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change{ Standard.count }.by(0)
+      end.to change { Standard.count }.by(0)
       # 基準登録ページに戻されることを確認する
       expect(current_path).to eq menu_standards_path(@menu)
       # 「"登録したメニュー名"の基準が新規登録されました」の文字がないことを確認する
@@ -65,18 +65,18 @@ RSpec.describe "基準登録", type: :system do
       # 基準ページに移動する
       visit standards_path
       # トップページには先ほど登録した内容のメニューが存在しないことを確認する（画像）
-      expect(page).to have_no_content("#{@menu.title}")
+      expect(page).to have_no_content(@menu.title.to_s)
       # トップページには先ほど登録した内容のメニューが存在しないことを確認する（メニュー名）
-      expect(page).to have_no_content("#{@menu.amount}")
+      expect(page).to have_no_content(@menu.amount.to_s)
     end
   end
 end
 
-RSpec.describe "基準編集", type: :system do
+RSpec.describe '基準編集', type: :system do
   before do
     @standard = FactoryBot.create(:standard)
   end
-  
+
   context '基準を編集して登録できるとき' do
     it '編集後も必要な情報が入力されていれば登録できる' do
       # トップページに移動してサインインする
@@ -96,9 +96,9 @@ RSpec.describe "基準編集", type: :system do
       choose("standard_large_#{@standard.menu.amount * 2}")
       choose("standard_small_#{@standard.menu.amount / 2}")
       # 登録するボタンを押しても、Standardモデルのカウントが上がらないことを確認する
-      expect{
+      expect do
         find('input[name="commit"]').click
-      }.to change{ Menu.count }.by(0)
+      end.to change { Menu.count }.by(0)
       # 編集完了ページに遷移することを確認する
       expect(current_path).to eq menu_standard_path(@standard.menu, @standard)
       # 「基準が更新されました」の文字があることを確認する
@@ -106,12 +106,12 @@ RSpec.describe "基準編集", type: :system do
       # 基準ページに移動する
       visit standards_path
       # 基準ページには更新前の基準分量（普通）、先ほど更新した基準分量（多め/少なめ）が存在することを確認する
-      expect(page).to have_content("#{@standard.menu.amount * 2}")
-      expect(page).to have_content("#{@standard.menu.amount}")
-      expect(page).to have_content("#{@standard.menu.amount / 2}")
+      expect(page).to have_content((@standard.menu.amount * 2).to_s)
+      expect(page).to have_content(@standard.menu.amount.to_s)
+      expect(page).to have_content((@standard.menu.amount / 2).to_s)
     end
   end
-  
+
   context '基準を編集して登録できないとき' do
     it '基準を登録したユーザー以外はその基準を編集できない' do
       # 基準登録したユーザーとは別のユーザーを生成する
@@ -121,12 +121,12 @@ RSpec.describe "基準編集", type: :system do
       # 基準ページに移動する
       visit standards_path
       # 基準ページには基準登録済みのメニュー名が存在しないことを確認する
-      expect(page).to have_no_content("#{@standard.menu.title}")
+      expect(page).to have_no_content(@standard.menu.title.to_s)
     end
   end
 end
 
-RSpec.describe "基準削除", type: :system do
+RSpec.describe '基準削除', type: :system do
   before do
     @standard = FactoryBot.create(:standard)
   end
@@ -140,9 +140,9 @@ RSpec.describe "基準削除", type: :system do
       # 削除ボタンがあることを確認する
       expect(page).to have_content('削除')
       # 削除ボタンを押すと、Standardモデルのカウントが1下がることを確認する
-      expect{
+      expect do
         find_link('削除', href: menu_standard_path(@standard.menu, @standard)).click
-      }.to change{ Standard.count }.by(-1)
+      end.to change { Standard.count }.by(-1)
       # 削除完了ページに遷移することを確認する
       expect(current_path).to eq menu_standard_path(@standard.menu, @standard)
       # 「"メニュー名"の基準が削除されました」の文字があることを確認する
@@ -163,7 +163,7 @@ RSpec.describe "基準削除", type: :system do
       # 基準ページに移動する
       visit standards_path
       # 基準ページには基準登録済みのメニュー名が存在しないことを確認する
-      expect(page).to have_no_content("#{@standard.menu.title}")
+      expect(page).to have_no_content(@standard.menu.title.to_s)
     end
   end
 end

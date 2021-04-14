@@ -15,9 +15,8 @@ class IntakesController < ApplicationController
 
   def create
     @intake = Intake.new(intake_params)
-    if @intake.save
-      return @menus = Menu.all.order('created_at DESC')
-    end
+    return @menus = Menu.all.order('created_at DESC') if @intake.save
+
     @menu = Menu.find(params[:menu_id])
     render :new
   end
