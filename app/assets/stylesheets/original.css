@@ -36,3 +36,11 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.navbar-nav-row {
+  display: flex;
+  flex-direction: row;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
