@@ -32,25 +32,25 @@ RSpec.describe Intake, type: :model do
       it 'timing_idが空では登録できない' do
         @intake.timing_id = ''
         @intake.valid?
-        expect(@intake.errors.full_messages).to include('タイミングを選択してください')
+        expect(@intake.errors.full_messages).to include('時間帯を選択してください')
       end
 
       it 'value_idが空では登録できない' do
         @intake.value_id = ''
         @intake.valid?
-        expect(@intake.errors.full_messages).to include('量を選択してください')
+        expect(@intake.errors.full_messages).to include('感覚量を選択してください')
       end
 
       it 'timing_idが2から4の整数以外では登録できない' do
         @intake.timing_id = 1
         @intake.valid?
-        expect(@intake.errors.full_messages).to include('タイミングを選択してください')
+        expect(@intake.errors.full_messages).to include('時間帯を選択してください')
       end
 
       it 'value_idが2から4の整数以外では登録できない' do
         @intake.value_id = 1
         @intake.valid?
-        expect(@intake.errors.full_messages).to include('量を選択してください')
+        expect(@intake.errors.full_messages).to include('感覚量を選択してください')
       end
 
       it 'userに紐づいていなければ登録できない' do

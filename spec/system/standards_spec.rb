@@ -30,9 +30,9 @@ RSpec.describe "基準登録", type: :system do
       expect(current_path).to eq menu_standards_path(@menu)
       # 「"登録したメニュー名"の基準が新規登録されました」の文字があることを確認する
       expect(page).to have_content("#{@menu.title}の基準が新規登録されました")
-      # 基準一覧ページに移動する
+      # 基準ページに移動する
       visit standards_path
-      # 基準一覧ページには基準登録したメニュー名、大盛り/普通/小盛りの分量が存在することを確認する
+      # 基準ページには基準登録したメニュー名、多め/普通/少なめの分量が存在することを確認する
       expect(page).to have_content("#{@menu.title}")
       expect(page).to have_content("#{@menu.amount * 3}")
       expect(page).to have_content("#{@menu.amount}")
@@ -62,7 +62,7 @@ RSpec.describe "基準登録", type: :system do
       expect(current_path).to eq menu_standards_path(@menu)
       # 「"登録したメニュー名"の基準が新規登録されました」の文字がないことを確認する
       expect(page).to have_no_content("#{@menu.title}の基準が新規登録されました")
-      # 基準一覧ページに移動する
+      # 基準ページに移動する
       visit standards_path
       # トップページには先ほど登録した内容のメニューが存在しないことを確認する（画像）
       expect(page).to have_no_content("#{@menu.title}")
@@ -103,9 +103,9 @@ RSpec.describe "基準編集", type: :system do
       expect(current_path).to eq menu_standard_path(@standard.menu, @standard)
       # 「基準が更新されました」の文字があることを確認する
       expect(page).to have_content("#{@standard.menu.title}の基準が更新されました")
-      # 基準一覧ページに移動する
+      # 基準ページに移動する
       visit standards_path
-      # 基準一覧ページには更新前の基準分量（普通）、先ほど更新した基準分量（大盛り/小盛り）が存在することを確認する
+      # 基準ページには更新前の基準分量（普通）、先ほど更新した基準分量（多め/少なめ）が存在することを確認する
       expect(page).to have_content("#{@standard.menu.amount * 2}")
       expect(page).to have_content("#{@standard.menu.amount}")
       expect(page).to have_content("#{@standard.menu.amount / 2}")
@@ -120,7 +120,7 @@ RSpec.describe "基準編集", type: :system do
       sign_in(another_user)
       # 基準ページに移動する
       visit standards_path
-      # 基準一覧ページには基準登録済みのメニュー名が存在しないことを確認する
+      # 基準ページには基準登録済みのメニュー名が存在しないことを確認する
       expect(page).to have_no_content("#{@standard.menu.title}")
     end
   end
@@ -147,9 +147,9 @@ RSpec.describe "基準削除", type: :system do
       expect(current_path).to eq menu_standard_path(@standard.menu, @standard)
       # 「"メニュー名"の基準が削除されました」の文字があることを確認する
       expect(page).to have_content("#{@standard.menu.title}の基準が削除されました")
-      # 基準一覧ページに移動する
+      # 基準ページに移動する
       visit standards_path
-      # 基準一覧ページには登録済みのメニュー名、分量（大盛り/普通/小盛り）が存在しないことを確認する
+      # 基準ページには登録済みのメニュー名、分量（多め/普通/少なめ）が存在しないことを確認する
       expect(page).to have_no_content(@standard.menu.title)
     end
   end
@@ -162,7 +162,7 @@ RSpec.describe "基準削除", type: :system do
       sign_in(another_user)
       # 基準ページに移動する
       visit standards_path
-      # 基準一覧ページには基準登録済みのメニュー名が存在しないことを確認する
+      # 基準ページには基準登録済みのメニュー名が存在しないことを確認する
       expect(page).to have_no_content("#{@standard.menu.title}")
     end
   end

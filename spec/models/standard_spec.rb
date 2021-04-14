@@ -31,7 +31,7 @@ RSpec.describe Standard, type: :model do
       it 'largeが空では登録できない' do
         @standard.large = ''
         @standard.valid?
-        expect(@standard.errors.full_messages).to include('大盛りを選択してください')
+        expect(@standard.errors.full_messages).to include('多めを選択してください')
       end
 
       it 'mediumが空では登録できない' do
@@ -43,13 +43,13 @@ RSpec.describe Standard, type: :model do
       it 'smallが空では登録できない' do
         @standard.small = ''
         @standard.valid?
-        expect(@standard.errors.full_messages).to include('小盛りを選択してください')
+        expect(@standard.errors.full_messages).to include('少なめを選択してください')
       end
 
       it 'largeに数字以外が含まれていれば登録できない' do
         @standard.large = '100g'
         @standard.valid?
-        expect(@standard.errors.full_messages).to include('大盛りを選択してください')
+        expect(@standard.errors.full_messages).to include('多めを選択してください')
       end
 
       it 'mediumに数字以外が含まれていれば登録できない' do
@@ -61,13 +61,13 @@ RSpec.describe Standard, type: :model do
       it 'smallに数字以外が含まれていれば登録できない' do
         @standard.small = '100g'
         @standard.valid?
-        expect(@standard.errors.full_messages).to include('小盛りを選択してください')
+        expect(@standard.errors.full_messages).to include('少なめを選択してください')
       end
 
       it 'largeが0以下の数値では登録できない' do
         @standard.large = 0
         @standard.valid?
-        expect(@standard.errors.full_messages).to include('大盛りを選択してください')
+        expect(@standard.errors.full_messages).to include('多めを選択してください')
       end
 
       it 'mediumが0以下の数値では登録できない' do
@@ -79,7 +79,7 @@ RSpec.describe Standard, type: :model do
       it 'smallが0以下の数値では登録できない' do
         @standard.small = 0
         @standard.valid?
-        expect(@standard.errors.full_messages).to include('小盛りを選択してください')
+        expect(@standard.errors.full_messages).to include('少なめを選択してください')
       end
 
       it 'userに紐づいていなければ登録できない' do
