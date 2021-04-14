@@ -84,7 +84,13 @@ RSpec.describe Menu, type: :model do
       it 'imagesが空では登録できない' do
         @menu.images = nil
         @menu.valid?
-        expect(@menu.errors.full_messages).to include('画像を添付してください')
+        expect(@menu.errors.full_messages).to include('画像は5枚添付してください')
+      end
+
+      it 'imagesの数が5でなければ登録できない' do
+        @menu.images.attach(io: File.open('public/images/test_image.jpg'), filename: 'test_image.jpg')
+        @menu.valid?
+        expect(@menu.errors.full_messages).to include('画像は5枚添付してください')
       end
 
       it 'bar_codeに0から9の数字以外が含まれていれば登録できない' do

@@ -25,7 +25,7 @@ RSpec.describe '実績登録', type: :system do
       select '普通', from: 'intake_value_id'
       # 登録するボタンを押すと、Intakeモデルのカウントが1上がることを確認する
       expect do
-        find('input[name="commit"]').click
+        all('input[name="commit"]')[1].click
       end.to change { Intake.count }.by(1)
       # 登録完了ページに遷移することを確認する
       expect(current_path).to eq menu_intakes_path(@standard.menu)
@@ -60,7 +60,7 @@ RSpec.describe '実績登録', type: :system do
       select '10', from: 'intake_date_3i'
       # 登録するボタンを押しても、Intakeモデルのカウントが変化しないことを確認する
       expect do
-        find('input[name="commit"]').click
+        all('input[name="commit"]')[1].click
       end.to change { Intake.count }.by(0)
       # 実績登録ページに戻されることを確認する
       expect(current_path).to eq menu_intakes_path(@standard.menu)
@@ -104,7 +104,7 @@ RSpec.describe '実績編集', type: :system do
       select '多め', from: 'intake_value_id'
       # 編集するボタンを押しても、Intakeモデルのカウントが上がらないことを確認する
       expect do
-        find('input[name="commit"]').click
+        all('input[name="commit"]')[1].click
       end.to change { Intake.count }.by(0)
       # 編集完了ページに遷移することを確認する
       expect(current_path).to eq menu_intake_path(@intake.menu, @intake)

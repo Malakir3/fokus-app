@@ -24,7 +24,7 @@ RSpec.describe '基準登録', type: :system do
       choose("standard_small_#{@menu.amount / 3}")
       # 登録するボタンを押すと、Standardモデルのカウントが1上がることを確認する
       expect do
-        find('input[name="commit"]').click
+        all('input[name="commit"]')[1].click
       end.to change { Standard.count }.by(1)
       # 登録完了ページに遷移することを確認する
       expect(current_path).to eq menu_standards_path(@menu)
@@ -56,7 +56,7 @@ RSpec.describe '基準登録', type: :system do
       choose("standard_medium_#{@menu.amount}")
       # せずに登録するボタンを押すと、Standardモデルのカウントが変化しないことを確認する
       expect do
-        find('input[name="commit"]').click
+        all('input[name="commit"]')[1].click
       end.to change { Standard.count }.by(0)
       # 基準登録ページに戻されることを確認する
       expect(current_path).to eq menu_standards_path(@menu)
@@ -97,7 +97,7 @@ RSpec.describe '基準編集', type: :system do
       choose("standard_small_#{@standard.menu.amount / 2}")
       # 登録するボタンを押しても、Standardモデルのカウントが上がらないことを確認する
       expect do
-        find('input[name="commit"]').click
+        all('input[name="commit"]')[1].click
       end.to change { Menu.count }.by(0)
       # 編集完了ページに遷移することを確認する
       expect(current_path).to eq menu_standard_path(@standard.menu, @standard)
