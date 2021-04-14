@@ -7,7 +7,7 @@
       <div class="field row">
         <div class="col">
         <%= f.label :lastname, class:"visually-hidden" %><br />
-        <%= f.text_field :lastname, class: "form-control", placeholder: "苗字" %>
+        <%= f.text_field :lastname, class: "form-control", placeholder: "苗字", autofocus: true %>
         </div>
         <div class="col">
           <%= f.label :firstname, class:"visually-hidden" %><br />
@@ -16,7 +16,7 @@
       </div>
       <div class="field">
         <%= f.label :nickname, class:"visually-hidden" %><br />
-        <%= f.text_field :nickname, autofocus: true, class: "form-control", placeholder: "ニックネーム" %>
+        <%= f.text_field :nickname, class: "form-control", placeholder: "ニックネーム" %>
       </div>
       <div class="field d-flex justify-content-between mt-3">
         <div><%= f.label :birthday %></div>

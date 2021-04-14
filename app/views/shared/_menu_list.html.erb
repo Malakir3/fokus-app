@@ -1,0 +1,29 @@
+<div class="my-4 w-100" id="myChart" width="900" height="380">
+  <div class="album py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <% @menus.each do |menu| %>
+        <div class="col">
+          <div class="card shadow-sm">
+            <%= link_to image_tag(menu.images[2].variant(resize_to_fill:[250, 250])), menu_path(menu.id), class: "d-flex justify-content-center" %>
+            <div class="card-title">
+              <%= link_to menu.title, menu_path(menu.id), class: "d-flex justify-content-center link-text td-none" %>
+              <div class="d-flex justify-content-around align-items-center">
+                <div class="btn-group">
+                  <%= link_to '実績登録', new_menu_intake_path(menu.id), class: "btn btn-sm btn-outline-info" %>
+                  <% if Standard.where(user_id: current_user.id, menu_id: menu.id) == []%>
+                    <%= link_to '基準登録', new_menu_standard_path(menu.id), class: "btn btn-sm btn-outline-warning" %>
+                  <% end %>
+                </div>
+                <small>
+                  <%= menu.calorie %> kcal
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

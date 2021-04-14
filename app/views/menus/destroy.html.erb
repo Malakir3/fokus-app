@@ -5,10 +5,8 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <%= render "shared/menus_header" %>
       <%# メイン画面の内容部分 %>
-      <div>
-      メニューが削除されました。
-      <div>
-      <%= link_to 'メニュートップへ戻る', menus_path %>
+      <div><%= @menu.title %>が削除されました。</div>
+      <%= link_to '食事メニューへ戻る', menus_path, class: "btn btn-success my-3" %>
       <%# //メイン画面の内容部分 %>
     </main>
   </div>

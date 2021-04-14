@@ -35,6 +35,10 @@ class MenusController < ApplicationController
     @menu.destroy
   end
 
+  def search
+    @menus = Menu.search(params[:keyword])
+  end
+
   private
 
   def menu_params

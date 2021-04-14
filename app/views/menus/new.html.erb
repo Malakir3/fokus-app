@@ -5,62 +5,7 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <%= render "shared/menus_header" %>
       <%# メイン画面の内容部分 %>
-      <%= form_with model: @menu, local: true, class:"row g-3" do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
-        <div>
-          <div class="col-12">
-            <%= f.label :title %>
-          </div>
-          <div class="col-12">
-            <%= f.text_field :title, placeholder: '例）ハンバーグ', autofocus: true %>
-          </div>
-        </div>
-        <div>
-          <div class="col-12">
-            <%= f.label :amount %>
-          </div>
-          <div class="col-12">
-            <%= f.text_field :amount, placeholder: '例）300' %>
-          </div>
-        </div>
-        <div>
-          <div class="col-12">
-            <%= f.label :unit %>
-          </div>
-          <div class="col-12">
-            <%= f.text_field :unit, placeholder: '例）個, g, mL ' %>
-          </div>
-        </div>
-        <div>
-          <div>
-            <%= f.label :calorie %>
-          </div>
-          <div class="col-12">
-            <%= f.text_field :calorie, placeholder: '例）450' %>kcal
-          </div>
-        </div>
-        <div>
-          <div>
-            <%= f.label :bar_code %>
-          </div>
-          <div class="col-12">
-            <%= f.text_field :bar_code, placeholder: '例）0123456789' %>
-          </div>
-        </div>
-        <div class="image-selects">
-          <p>
-          ※画像は分量が多い順に5枚添付してください<br>
-          (特大→大→中→小→ミニ)
-          </p>
-          <%= f.label :images %>
-          <%= f.file_field :images, name: 'menu[images][]', id:"menu-image" %>
-        </div>
-        <%# JavaScriptによる画像挿入用要素 %>
-        <div id="image-list"></div>
-        <div class="d-grid gap-2 col-6 my-4">
-          <%= f.submit '登録する', class:"btn btn-primary btn-lg" %>
-        </div>
-      <% end %>
+      <%= render "shared/menu_form"%>
       <%# //メイン画面の内容部分 %>
     </main>
   </div>

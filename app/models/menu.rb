@@ -8,7 +8,6 @@ class Menu < ApplicationRecord
     validates :amount
     validates :unit
     validates :calorie
-    validates :images, presence: { message: 'を添付してください' }
   end
 
   with_options numericality: { greater_than: 0 } do
@@ -16,7 +15,16 @@ class Menu < ApplicationRecord
     validates :calorie
   end
 
+  validate :images_five?
   validates :bar_code, format: { with: /\A[0-9]*\z/, message: 'は0から9の数字のみで入力してください' }
+
+  def self.search(word)
+    if word != ''
+      Menu.where('title LIKE(?)', "%#{word}%")
+    else
+      Menu.all
+    end
+  end
 
   def self.menu_list(menu)
     menu_ary = []
@@ -47,5 +55,11 @@ class Menu < ApplicationRecord
     menu_ary << menu_hash
 
     menu_ary
+  end
+
+  private
+
+  def images_five?
+    errors.add(:images, 'は5枚添付してください') if images.length != 5
   end
 end

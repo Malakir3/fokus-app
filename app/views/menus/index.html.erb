@@ -5,33 +5,7 @@
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <%= render "shared/menus_header" %>
         <%# メイン画面の内容部分 %>
-        <div class="my-4 w-100" id="myChart" width="900" height="380">
-          <div class="album py-5">
-            <div class="container">
-              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <% @menus.each do |menu| %>
-                <div class="col">
-                  <div class="card shadow-sm">
-                    <%= link_to image_tag(menu.images[2].variant(resize_to_fill:[250, 250])), menu_path(menu.id), class: "d-flex justify-content-center" %>
-                    <div class="card-title">
-                      <%= link_to menu.title, menu_path(menu.id), class: "d-flex justify-content-center link-text td-none" %>
-                      <div class="d-flex justify-content-around align-items-center">
-                        <div class="btn-group">
-                          <%= link_to '詳細', menu_path(menu.id), class: "btn btn-sm btn-outline-light" %>
-                          <%= link_to '編集', edit_menu_path(menu.id), class: "btn btn-sm btn-outline-light" %>
-                        </div>
-                        <small>
-                          <%= menu.calorie %> kcal
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render "shared/menu_list" %>
         <h2>メニュー表</h2>
         <div class="table-responsive">
           <table class="table table-sm">
@@ -52,6 +26,7 @@
             </tbody>
           </table>
         </div>
+        <%# //メイン画面の内容部分 %>
       </main>
     </div>
   </div>

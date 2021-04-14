@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :menus do
     resources :standards, except: :index
     resources :intakes, except: :index
+    collection do
+      get 'search'
+    end
   end
   resources :graphs, only: :create
 end

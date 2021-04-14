@@ -5,11 +5,11 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
       <%= render "shared/menus_header" %>
       <%# メイン画面の内容部分 %>
-      <div>
-      メニューが新規登録されました。続けて登録しますか？<br>
-      <%= link_to '登録する', new_menu_path %>
-      <%= link_to 'メニュートップへ戻る', menus_path %> 
-      <div>
+      <div><%= @menu.title %>が新規登録されました。続けて登録しますか？</div>
+      <div class="col-sm-auto col-md-3 my-3">
+        <div><%= link_to '登録する', new_menu_path, class: "btn btn-secondary" %></div>
+        <div class="my-3"><%= link_to '食事メニューへ戻る', menus_path, class: "btn btn-success" %></div>
+      </div>
       <%# //メイン画面の内容部分 %>
     </main>
   </div>

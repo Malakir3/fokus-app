@@ -14,13 +14,13 @@ ja:
        bar_code: バーコード
        images: 画像
      standard:
-       large: 大盛り
+       large: 多め
        medium: 普通
-       small: 小盛り
+       small: 少なめ
      intake:
        date: 日付
-       timing_id: タイミング
-       value_id: 量
+       timing_id: 時間帯
+       value_id: 感覚量
      graph:
        date: 日付
        calorie: カロリー
