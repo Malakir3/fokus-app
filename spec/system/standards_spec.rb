@@ -77,8 +77,8 @@ RSpec.describe "基準編集", type: :system do
     @standard = FactoryBot.create(:standard)
   end
   
-  context '基準を編集して再登録できるとき' do
-    it '編集後も必要な情報が入力されていれば再登録できる' do
+  context '基準を編集して登録できるとき' do
+    it '編集後も必要な情報が入力されていれば登録できる' do
       # トップページに移動してサインインする
       sign_in(@standard.user)
       # 基準ページに移動する
@@ -112,7 +112,7 @@ RSpec.describe "基準編集", type: :system do
     end
   end
   
-  context '基準を編集して再登録できないとき' do
+  context '基準を編集して登録できないとき' do
     it '基準を登録したユーザー以外はその基準を編集できない' do
       # 基準登録したユーザーとは別のユーザーを生成する
       another_user = FactoryBot.create(:user)
