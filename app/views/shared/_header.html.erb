@@ -1,27 +1,33 @@
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">
-  <i class="bi bi-globe2" style="font-size: 2rem; color: cornflowerblue;">Fokus</i>
+    <i class="bi bi-globe2" style="font-size: 2rem; color: cornflowerblue;">Fokus</i>
   </a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <%# 全画面では表示されない %>
     <span class="navbar-toggler-icon"></span>
   </button>
-  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <%= form_with(url: search_menus_path, local: true, method: :get, class: "w-100 bg-dark") do |f| %>
+    <div class="w-100 d-flex ">
+      <%= f.label :keyword, class: "visually-hidden" %>
+      <%= f.text_field :keyword, placeholder: '検索したいメニュー名を入力してください', class: "w-100 bg-dark text-white" %>
+      <%= f.submit '検索', class: "btn btn-outline-light"%>
+    </div>
+  <% end %>
   <ul class="navbar-nav px-3">
-  <% if user_signed_in? %>
+    <% if user_signed_in? %>
     <li class="nav-item text-nowrap">
     <%= link_to 'ログアウト', destroy_user_session_path, class: 'nav-link', method: :delete %>
     </li>
     <li class="nav-item text-nowrap">
     <%= link_to "#{current_user.nickname}", user_path(current_user.id), class: 'nav-link' %>
     </li>
-  <% else %>
+    <% else %>
     <li class="nav-item text-nowrap">
     <%= link_to 'ログイン', new_user_session_path, class: 'nav-link' %>
     </li>
     <li class="nav-item text-nowrap">
     <%= link_to '新規登録', new_user_registration_path, class: 'nav-link' %>
     </li>
-  <% end %>
+    <% end %>
   </ul>
 </header>
