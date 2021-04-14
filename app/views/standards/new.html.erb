@@ -6,9 +6,7 @@
       <%= render "shared/standards_header" %>
       <%# メイン画面の内容部分 %>
       <div class="container-fluid"> 
-        <p class="fs-3 mx-auto p-3" style="width: 200px;">
-        <%= @menu.title %>
-        </p>
+        <p class="fs-3 mx-auto p-3 text-center"><%= @menu.title %></p>
         <div class="menu-list">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-3">
           <% @menu.images.each do |image|%>

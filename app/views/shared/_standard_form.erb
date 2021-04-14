@@ -1,37 +1,37 @@
 <%= form_with model: [@menu, @standard], local: true, class:"row my-3" do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
 <div class="row my-3 fs-4">
-  <div class="col-12 d-flex justify-content-around">
-  <%= f.label :large %>
+  <div class="col-12 d-flex justify-content-center align-items-center fs-6">
+  <%= f.label :large, class:"fw-bol text-warning" %>だと感じる量を選択してください
   </div>
   <% i = 4 %>
   <% while i >= 0 do %>
     <div class="col d-flex justify-content-center align-items-center">
-    <label><%= f.radio_button :large, :"#{@amount_cal[i]}", class:"form-check-input" %><%= @amount_cal[i] %><%= @menu.unit %></label>
+    <label><%= f.radio_button :large, :"#{@amount_cal[i]}", class:"form-check-input" %> <%= @amount_cal[i] %> <%= @menu.unit %></label>
     </div>
   <% i -= 1 %>
   <% end %>
 </div>
 <div class="row my-3 fs-4">
-  <div class="col-12 d-flex justify-content-center align-items-center">
-  <%= f.label :medium %>
+  <div class="col-12 d-flex justify-content-center fs-6">
+  <%= f.label :medium, class:"fw-bol text-warning" %>だと感じる量を選択してください
   </div>
   <% i = 4 %>
   <% while i >= 0 do %>
     <div class="col d-flex justify-content-center align-items-center">
-    <label><%= f.radio_button :medium, :"#{@amount_cal[i]}", class:"form-check-input" %><%= @amount_cal[i] %><%= @menu.unit %></label>
+    <label><%= f.radio_button :medium, :"#{@amount_cal[i]}", class:"form-check-input" %> <%= @amount_cal[i] %> <%= @menu.unit %></label>
     </div>
   <% i -= 1 %>
   <% end %>
 </div>
 <div class="row my-3 fs-4">
-  <div class="col-12 d-flex justify-content-center align-items-center">
-  <%= f.label :small %>
+  <div class="col-12 d-flex justify-content-center fs-6">
+  <%= f.label :small, class:"fw-bol text-warning" %>だと感じる量を選択してください
   </div>
   <% i = 4 %>
   <% while i >= 0 do %>
     <div class="col d-flex justify-content-center align-items-center">
-    <label><%= f.radio_button :small, :"#{@amount_cal[i]}", class:"form-check-input" %><%= @amount_cal[i] %><%= @menu.unit %></label>
+    <label><%= f.radio_button :small, :"#{@amount_cal[i]}", class:"form-check-input" %> <%= @amount_cal[i] %> <%= @menu.unit %></label>
     </div>
   <% i -= 1 %>
   <% end %>
