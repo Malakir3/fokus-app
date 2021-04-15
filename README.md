@@ -59,13 +59,13 @@ Fokusは、食事の量を感覚的に入力することにより、正確なカ
 
 # DEMO
 1. ログイン後、画面左部のメニューバーから行いたい操作を選択します。  
-[![Image from Gyazo](https://i.gyazo.com/0e4a48c2ebafffdf663133624bb82120.jpg)](https://gyazo.com/0e4a48c2ebafffdf663133624bb82120)
+[![Image from Gyazo](https://i.gyazo.com/63de245b7a8904087d587cf2f282fe6d.jpg)](https://gyazo.com/63de245b7a8904087d587cf2f282fe6d)
 
 2. 基準登録画面では、5種類の写真の中からそれぞれ「多め」、「普通」、「少なめ」だと感じる写真を選び、登録してください。  
-[![Image from Gyazo](https://i.gyazo.com/11235dc0a42b8aea7bf46da899c0d04e.jpg)](https://gyazo.com/11235dc0a42b8aea7bf46da899c0d04e)
+[![Image from Gyazo](https://i.gyazo.com/37a7059f16ecd66c7deefe7802b1f104.jpg)](https://gyazo.com/37a7059f16ecd66c7deefe7802b1f104)
 
 3. 食事実績画面では、登録した食事実績に基づき、日毎のカロリー摂取量をグラフで閲覧できます。  
-[![Image from Gyazo](https://i.gyazo.com/477a655723a022c6170886eddf2ee22c.jpg)](https://gyazo.com/477a655723a022c6170886eddf2ee22c)
+[![Image from Gyazo](https://i.gyazo.com/676163a0169a84c44722c23c946b3ef6.jpg)](https://gyazo.com/676163a0169a84c44722c23c946b3ef6)
 
 # 工夫したポイント
 1. 食事実績を登録する際は、食事時間帯と食事量を、それぞれActiveHashを用いて登録するように設計しました。これにより、余計なデータをデータベースが保持する必要がなくなり、シンプルな形式でデータを保存することができるようになりました。
