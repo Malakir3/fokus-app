@@ -5,8 +5,20 @@
 # end
 # User.import users
 
-menus = []
-5.times do |i|
-  menus << Menu.new(title: "食べ物#{i+1}", amount: (i + 100), unit: "g", calorie: (i + 300), bar_code: "000#{i+1}" )
+# 画像は添付されているはずだが、画像だけDBに保存されない
+# menus = []
+# 3.times do |i|
+#   menus << Menu.new(title: "食べ物#{i+1}", amount: (i + 100), unit: "g", calorie: (i + 300), bar_code: "000#{i+1}")
+#   5.times do
+#     menus[i].images.attach(io: File.open('public/images/test_image.jpg'), filename: 'test_image.jpg')
+#   end
+# end
+# Menu.import menus
+
+3.times do |i|
+  menu = Menu.new(title: "食べ物#{i+1}", amount: (i + 100), unit: "g", calorie: (i + 300), bar_code: "000#{i+1}")
+  5.times do
+    menu.images.attach(io: File.open('public/images/test_image.jpg'), filename: 'test_image.jpg')
+  end
+  menu.save
 end
-Menu.import menus
