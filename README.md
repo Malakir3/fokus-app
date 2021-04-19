@@ -82,7 +82,7 @@ JavaScript, Ajax, Bootstrap
 MySQL, SequelPro
 
 ## インフラ
-AWS(EC2), Capistrano, Docker（開発環境）
+AWS(EC2), Capistrano
 
 ## Webサーバ（本番環境）
 Nginx
