@@ -10,14 +10,14 @@ class IntakesController < ApplicationController
 
   def new
     @intake = Intake.new
-    @menu = Menu.find(params[:menu_id])
+    set_menu
   end
 
   def create
     @intake = Intake.new(intake_params)
     return @menus = Menu.all.order('created_at DESC') if @intake.save
 
-    @menu = Menu.find(params[:menu_id])
+    set_menu
     render :new
   end
 
@@ -46,6 +46,10 @@ class IntakesController < ApplicationController
     params.require(:intake).permit(
       :date, :timing_id, :value_id
     ).merge(user_id: current_user.id, menu_id: params[:menu_id])
+  end
+
+  def set_menu
+    @menu = Menu.find(params[:menu_id])
   end
 
   def set_intake
