@@ -6,15 +6,15 @@ Fokusはカロリー計算アプリです。毎日の食事メニューを記録
 メニューの記録方法はシンプルで、食事した各メニューの量を、「多め」、「普通」、「少なめ」から選ぶだけです。
 
 # 本番環境URL
-[Fokus-app](http://18.181.68.104/)
+[Fokus-app]~~(http://18.181.68.104/)~~ ←現在停止中です。
 
 # テスト用情報
 ## Basic認証
-- ID: test
-- Password: 34807
+~~- ID: test~~
+~~- Password: 34807~~
 ## ユーザー情報
-- Email: test12@com
-- Password: pass12
+~~- Email: test12@com~~
+~~- Password: pass12~~
 
 # ローカルでの動作方法
 ruby -v 2.6.5  
